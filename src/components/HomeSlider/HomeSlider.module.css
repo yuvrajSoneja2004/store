@@ -1,0 +1,230 @@
+.homeSliderA {
+    height: 100vh;
+    background: url("../../assets/slider-01.webp") no-repeat top center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.homeSliderA div {
+    text-align: left;
+    margin-left: 19rem;
+}
+
+.homeSliderA div button {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: .9rem 3.2rem;
+    margin-top: .8rem;
+    border: none;
+    text-transform: capitalize;
+    /* temprery styles  */
+    background: #000000;
+    color: #ffffff;
+}
+
+.homeSliderA div h3 {
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-weight: bolder;
+}
+
+.homeSliderA div h1 {
+    text-transform: capitalize;
+    font-size: 5rem;
+    /* font-weight: 900; */
+    color: #222222;
+    margin: 1.4rem 0;
+    /* text-shadow: 1px 0 #222222; */
+    text-shadow: 0px 1px, 1px 0px, 1px 0px;
+    /* letter-spacing: 1px; */
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* for B  */
+.homeSliderB {
+    height: 100vh;
+    background: url("../../assets/slider-01.webp") no-repeat top center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.homeSliderB div {
+    text-align: right;
+    margin-right: 19rem;
+}
+
+.homeSliderB div button {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: .9rem 3.2rem;
+    margin-top: .8rem;
+    border: none;
+    text-transform: capitalize;
+    /* temprery styles  */
+    background: #000000;
+    color: #ffffff;
+}
+
+.homeSliderB div h3 {
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-weight: bolder;
+}
+
+.homeSliderB div h1 {
+    text-transform: capitalize;
+    font-size: 5rem;
+    /* font-weight: 900; */
+    color: #222222;
+    margin: 1.4rem 0;
+    /* text-shadow: 1px 0 #222222; */
+    text-shadow: 0px 1px, 1px 0px, 1px 0px;
+    /* letter-spacing: 1px; */
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* for C  */
+.homeSliderC {
+    height: 100vh;
+    background: url("../../assets/slider-01.webp") no-repeat top center;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.homeSliderC div {
+    text-align: left;
+    margin-left: 19rem;
+}
+
+.homeSliderC div button {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: .9rem 3.2rem;
+    margin-top: .8rem;
+    border: none;
+    text-transform: capitalize;
+    /* temprery styles  */
+    background: #000000;
+    color: #ffffff;
+}
+
+.homeSliderC div h3 {
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    font-weight: bolder;
+}
+
+.homeSliderC div h1 {
+    text-transform: capitalize;
+    font-size: 5rem;
+    /* font-weight: 900; */
+    color: #222222;
+    margin: 1.4rem 0;
+    /* text-shadow: 1px 0 #222222; */
+    text-shadow: 0px 1px, 1px 0px, 1px 0px;
+    /* letter-spacing: 1px; */
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.homeSliderB {
+    height: 100vh;
+    background: url("../../assets/slider-02.webp") no-repeat top center;
+    background-size: cover;
+}
+
+.homeSliderC {
+    height: 100vh;
+    background: url("../../assets/slider-03.webp") no-repeat top center;
+    background-size: cover;
+}
+
+
+/*---------- Responsive code ---------- */
+
+@media screen and (max-width: 821px) {
+    .homeSliderA {
+        justify-content: center;
+
+    }
+
+    .homeSliderB {
+        justify-content: center;
+    }
+
+    .homeSliderC {
+        justify-content: center;
+
+    }
+
+    .homeSliderA div {
+        margin: 0;
+    }
+
+    .homeSliderB div {
+        margin: 0;
+    }
+
+    .homeSliderC div {
+        margin: 0;
+    }
+
+
+}
+
+@media screen and (max-width: 594px) {
+    .homeSliderA div h1 {
+        font-size: 4rem;
+    }
+
+    .homeSliderB div h1 {
+        font-size: 4rem;
+    }
+
+    .homeSliderC div h1 {
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 459px) {
+    .homeSliderA div h1 {
+        font-size: 2.9rem;
+    }
+
+    .homeSliderB div h1 {
+        font-size: 2.9rem;
+    }
+
+    .homeSliderC div h1 {
+        font-size: 2.9rem;
+    }
+}
+
+
+
+/* ---------- Optional responsive code ----------  */
+@media screen and (max-width:337px) {
+    .homeSliderA div h1 {
+        font-size: 2rem;
+    }
+
+    .homeSliderB div h1 {
+        font-size: 2rem;
+    }
+
+    .homeSliderC div h1 {
+        font-size: 2rem;
+    }
+}

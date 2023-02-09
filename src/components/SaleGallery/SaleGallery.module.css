@@ -1,0 +1,122 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 9rem;
+    padding: 2rem;
+}
+
+.bx {
+    display: grid;
+    text-align: center;
+    place-items: center;
+    height: 27rem;
+    width: 56rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.bxA {
+    background: url(../../assets/offerAssets/lookup-2023.webp);
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: .5s ease-in;
+}
+
+
+
+.bxB {
+    background: url(../../assets/offerAssets/summer-sale-70-off.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: .5s ease-in;
+
+
+}
+
+.content h2,
+.content h3,
+.content h1,
+.content h4 {
+    text-shadow: 0px 1px, 1px 0px, 1px 0px;
+    letter-spacing: .1rem;
+    text-decoration: none;
+}
+
+.rmLink {
+    text-decoration: none;
+}
+
+.content h2 {
+    font-size: 2.4rem;
+}
+
+.content h3 {
+    font-size: 1.4rem;
+    margin-top: .6rem;
+}
+
+.content h4 {
+    font-size: 2rem;
+}
+
+.content h1 {
+    font-size: 5rem;
+}
+
+.bxA:hover,
+.bxB:hover {
+    background-size: 120%;
+
+}
+
+/* ---------- Responsive Code ----------  */
+@media screen and (max-width: 1179px) {
+    .wrapper {
+        flex-direction: column;
+        row-gap: 3rem;
+    }
+}
+
+@media screen and (max-width: 631px) {
+    .bx {
+        width: 48rem;
+    }
+}
+
+@media screen and (max-width: 516px) {
+    .bx {
+        width: 44rem;
+    }
+}
+
+@media screen and (max-width: 484px) {
+
+    .bx {
+        width: 38rem;
+    }
+
+    .wrapper {
+        row-gap: 0rem;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .bx {
+        width: 33rem;
+    }
+}
+
+@media screen and (max-width: 359px) {
+    .bx {
+        width: 26rem;
+    }
+}
+
+/* Task : make the offer section responsive  */

@@ -1,0 +1,37 @@
+.sliderBtn {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: .9rem 3.2rem;
+    margin-top: .8rem;
+    border: none;
+    text-transform: capitalize;
+    /* temprery styles  */
+    background: #000000;
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+
+}
+
+.sliderBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: #00badb;
+    z-index: -3;
+    transform: translateY(100%);
+    transition: .4s;
+    opacity: 0;
+}
+
+.sliderBtn:hover::before {
+    transform: translateY(0);
+    opacity: 1;
+
+}

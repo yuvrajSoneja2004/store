@@ -1,0 +1,149 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50vh;
+    background: #f6f6f8;
+    margin-top: 3rem;
+}
+
+.grid {
+    display: grid;
+    /* grid-template-columns: 1.5fr repeat(3, 1fr) auto; */
+    grid-template-columns: repeat(4, 1fr);
+    padding: 5rem 17rem;
+    column-gap: 4rem;
+    place-content: center;
+}
+
+.align {
+    display: flex;
+    align-items: center;
+
+}
+
+.align p {
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.footIcons {
+    margin: 0 .6rem;
+}
+
+.noM {
+    margin: 0;
+}
+
+.listFlex {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+}
+
+.listFlex strong {
+    font-size: 1.7rem;
+}
+
+.footerLink {
+    text-decoration: none;
+    color: #878787;
+    font-size: 1.5rem;
+    transition: .2s ease-out;
+}
+
+.footerLink:hover {
+    color: #00badb;
+}
+
+.sm {
+    display: flex;
+    align-items: center;
+    gap: 1.9rem;
+}
+
+.fb,
+.twitter,
+.insta,
+.lin,
+.pintrs {
+    transition: .4s ease-in-out;
+    padding: .2rem;
+
+}
+
+.fb:hover {
+    transform: translateY(-.6rem);
+    fill: #3b5998;
+
+}
+
+.twitter:hover {
+    transform: translateY(-.6rem);
+    fill: #00acee;
+
+}
+
+.insta:hover {
+    transform: translateY(-.6rem);
+    fill: #E1306C;
+
+
+}
+
+.lin:hover {
+    transform: translateY(-.6rem);
+    fill: #0A66C2;
+
+}
+
+.pintrs:hover {
+    transform: translateY(-.6rem);
+    fill: #c8232c;
+
+
+}
+
+.fb:hover {
+    transform: translateY(-.6rem);
+    fill: #3b5998;
+
+
+}
+
+.footerInput {
+    padding: 1rem 1rem;
+    border-radius: 2rem;
+    border: none;
+    border: 2px solid #878787;
+    pointer-events: none;
+}
+
+/* ---------- Responsive Code ----------  */
+
+@media screen and (max-width:1197px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 5rem 8rem;
+        row-gap: 4rem;
+
+    }
+}
+
+@media screen and (max-width:670px) {
+    .grid {
+        grid-template-columns: 1fr;
+        padding: 5rem 3rem;
+
+    }
+}
+
+@media screen and (max-width:309px) {
+    .grid {
+
+        padding: 5rem 1rem;
+
+
+    }
+}
