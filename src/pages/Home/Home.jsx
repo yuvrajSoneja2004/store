@@ -1,11 +1,10 @@
 import React from 'react'
-import Footer from '../Footer/Footer'
-import GenreSection from '../GenreSection/GenreSection'
-import Homeheadings from '../HomeHeadings/Homeheadings'
-import HomeSlider from '../HomeSlider/HomeSlider'
-import SaleGallery from '../SaleGallery/SaleGallery'
-import ServicesSection from '../ServicesSection/ServicesSection'
-import TrendingSection from '../TrendingSection/TrendingSection'
+import GenreSection from '../../components/GenreSection/GenreSection'
+import Homeheadings from '../../components/HomeHeadings/Homeheadings'
+import HomeSlider from '../../components/HomeSlider/HomeSlider'
+import SaleGallery from '../../components/SaleGallery/SaleGallery'
+import ServicesSection from '../../components/ServicesSection/ServicesSection'
+import TrendingSection from '../../components/TrendingSection/TrendingSection'
 
 
 function Home() {
@@ -18,7 +17,7 @@ function Home() {
             <SaleGallery />
             <Homeheadings title="best seller" desc="Top sale in this week" />
             <ServicesSection />
-            <Footer />
+
         </>
     )
 }
