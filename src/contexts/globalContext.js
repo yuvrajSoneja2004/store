@@ -16,7 +16,9 @@ export const GlobalProvider = ({ children }) => {
     // Defining global state
     let initialState = {
         isLoading: false,
-        products: []
+        products: [],
+        trendingProducts: [],
+        bestSellingProducts: []
     }
 
 
@@ -97,12 +99,14 @@ export const GlobalProvider = ({ children }) => {
             dispatch({ type: "API_ERROR" });
         }
     }
+
+
     useEffect(() => {
         getData();
     }, [])
 
 
-    return <GlobalContext.Provider value={{ bgTheme, fontTheme, ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh }}
+    return <GlobalContext.Provider value={{ bgTheme, fontTheme, ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch }}
 
     >{children}</GlobalContext.Provider>
 };

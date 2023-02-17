@@ -8,10 +8,21 @@ let reducer = (state, action) => {
             }
 
         case "ALL_PRODUCTS":
+
+            let trendingData = action.payload.filter((curProduct) => {
+                return curProduct.isTrending === true;
+            })
+            let bestSellerData = action.payload.filter((curProduct) => {
+                return curProduct.isBestSeller === true;
+            })
+
             return {
                 ...state,
                 isLoading: false,
-                products: action.payload
+                products: action.payload,
+                trendingProducts: trendingData,
+                bestSellingProducts: bestSellerData
+
             }
 
         case "ASENDING_DATA":
@@ -38,6 +49,11 @@ let reducer = (state, action) => {
                 ...state,
                 isLoading: false,
                 products: action.payload
+            }
+        case "API_ERROR":
+            return {
+                ...state,
+                isLoading: false
             }
 
         default:

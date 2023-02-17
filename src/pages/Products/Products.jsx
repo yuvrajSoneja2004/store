@@ -5,13 +5,13 @@ import { Dropdown } from 'react-bootstrap';
 import { useGlobalContext } from '../../contexts/globalContext';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Loader from '../../components/Loader/Loader';
-import Cumb from '../../components/Cumb/Cumb';
+// import Cumb from '../../components/Cumb/Cumb';
 
 
 function Products() {
 
 
-    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh } = useGlobalContext();
+    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch } = useGlobalContext();
 
 
 
@@ -44,6 +44,8 @@ function Products() {
         setCardWidth({ width: '24rem', minHeight: '40rem' })
     }
 
+    console.log(products);
+
 
 
 
@@ -58,7 +60,7 @@ function Products() {
 
         <>
 
-            <Cumb title='Products' bgUrl='https://images.pexels.com/photos/713829/pexels-photo-713829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' />
+            {/* <Cumb title='Products' bgUrl='https://images.pexels.com/photos/713829/pexels-photo-713829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' /> */}
             {/* Products data  */}
 
             <div className={S.container}>
@@ -98,6 +100,7 @@ function Products() {
                 </div>
                 <div className={S.productsGrid} style={{ display: 'grid', placeItems: 'center', ...gridType, rowGap: '7rem', marginTop: '5rem' }}>
                     {
+
                         products.map((product) => {
                             return <ProductCard data={product} key={product._id} wid={cardWidth} />
                         })

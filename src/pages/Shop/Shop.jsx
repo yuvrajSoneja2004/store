@@ -1,10 +1,10 @@
 import React from 'react'
-import Cumb from '../../components/Cumb/Cumb'
+// import Cumb from '../../components/Cumb/Cumb'
 
 function Shop() {
     return (
         <>
-            <Cumb title='Shop' bgUrl='' />
+            {/* <Cumb title='Shop' bgUrl='' /> */}
         </>
     )
 }

@@ -1,0 +1,11 @@
+.icon {
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    border: 5px solid blue;
+    cursor: pointer;
+}
+
+.icon.active {
+    border: none;
+    opacity: 1;
+}
