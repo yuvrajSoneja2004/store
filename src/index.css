@@ -1,6 +1,18 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap'); */
-
-
 html {
     font-family: 'Poppins', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 100px;
+    background: green;
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: pink;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: orange;
 }

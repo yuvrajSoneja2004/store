@@ -2,17 +2,21 @@ import React, { useEffect, useState } from 'react';
 import S from './Products.module.css';
 import { CiFilter } from 'react-icons/ci';
 import { Dropdown } from 'react-bootstrap';
-import { useGlobalContext } from '../../contexts/globalContext';
+import { useGlobalContext, useLoader } from '../../contexts/globalContext';
+import Loader from '../../components/Loader/Loader'
 import ProductCard from '../../components/ProductCard/ProductCard';
-import Loader from '../../components/Loader/Loader';
+import ReactPaginate from 'react-paginate';
 // import Cumb from '../../components/Cumb/Cumb';
 
 
 function Products() {
 
 
-    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch } = useGlobalContext();
 
+
+    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, productsToDisplay, pageCount, handlePageClick, setLoadingProgress, loadingSpeedController } = useGlobalContext();
+
+    useEffect(loadingSpeedController, [])
 
 
     // Dynamic grid styles state
@@ -99,13 +103,27 @@ function Products() {
                     </div>
                 </div>
                 <div className={S.productsGrid} style={{ display: 'grid', placeItems: 'center', ...gridType, rowGap: '7rem', marginTop: '5rem' }}>
-                    {
+                    {/* {
 
                         products.map((product) => {
                             return <ProductCard data={product} key={product._id} wid={cardWidth} />
                         })
+                    } */}
+                    {
+                        productsToDisplay.map((product) => {
+                            return <ProductCard data={product} key={product._id} wid={cardWidth} />
+                        })
+
                     }
                 </div>
+                <ReactPaginate
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    containerClassName={'pagination'}
+                    activeClassName={'active'}
+                />
             </div>
 
 

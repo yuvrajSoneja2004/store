@@ -20,6 +20,7 @@ function Icon(props) {
             <div className={S.layoutIcons} >
                 <img src={props.iconSrc} alt={props.iconAlt} width={44} />
             </div>
+
         </div>
     );
 }

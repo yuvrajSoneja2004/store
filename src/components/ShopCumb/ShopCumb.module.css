@@ -1,0 +1,56 @@
+.whole {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+    width: 100%;
+    text-transform: capitalize;
+    position: relative;
+    z-index: 999;
+
+
+}
+
+.whole::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.644);
+    z-index: -23;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+.bear span {
+    font-size: 1.5rem;
+    margin: 0 .7rem;
+}
+
+.content h1 {
+    font-size: 5rem;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    margin-bottom: 1rem;
+
+}
+
+.noLink {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.noLink:hover {
+    color: #00badb;
+}

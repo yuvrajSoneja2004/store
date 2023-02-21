@@ -14,10 +14,10 @@ import { useGlobalContext } from "../../contexts/globalContext";
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
-  let { bgTheme, fontTheme } = useGlobalContext();
+  let { themeState, themeHandler } = useGlobalContext();
   return (
     <>
-      <nav className="main-nav" style={bgTheme}>
+      <nav className="main-nav" style={themeState}>
         {/* 1st logo part  */}
         <div className="logo">
 
@@ -29,26 +29,26 @@ const Navbar = () => {
           className={
             showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
           }>
-          <ul>
+          <ul >
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" style={themeState}>Home</NavLink>
             </li>
             <li className="cumb">
               <span className="spanNew">New</span>
-              <NavLink to="/shop">Shop</NavLink>
+              <NavLink to="/shop" style={themeState}>Shop</NavLink>
             </li>
-            <li style={fontTheme}>
-              <NavLink to="/products">Products</NavLink>
+            <li style={themeState}>
+              <NavLink to="/products" style={themeState}>Products</NavLink>
             </li>
             <li className="cumb">
               <span className="spanSale">Sale</span>
-              <NavLink to="/sale-products">Sale</NavLink>
+              <NavLink to="/sale-products" style={themeState}>Sale</NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/about" style={themeState}>About</NavLink>
             </li>
             <li>
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/contact" style={themeState}>Contact</NavLink>
             </li>
           </ul>
         </div>
@@ -59,31 +59,32 @@ const Navbar = () => {
             <li >
               <Link
                 to='/search'
-                style={fontTheme}
+                style={themeState}
                 className='nav-icons'
 
               >
-                <CiSearch size={26} />
+                <CiSearch size={26} style={themeState} />
               </Link>
             </li>
             <li className="cumb">
               <div className="spanCart">0</div>
               <Link
                 to='/wishlist'
-                style={fontTheme}
+                style={themeState}
                 className="wishlist-icon"
 
               >
-                <CiHeart size={26} />
+                <CiHeart size={26} style={themeState} />
               </Link>
             </li>
             <li className="cumb">
               <span className="spanCart">0</span>
               <Link
                 to='/cart'
-                style={fontTheme}
+                style={themeState}
               >
-                <CiShoppingCart size={26} />
+                <CiShoppingCart size={26} style={themeState} />
+                <li onClick={themeHandler}>work</li>
               </Link>
             </li>
           </ul>

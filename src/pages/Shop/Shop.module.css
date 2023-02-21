@@ -1,0 +1,142 @@
+.collection {
+    width: 100%;
+    min-height: 30rem;
+    display: grid;
+    place-items: center;
+    color: #ffffff;
+    font-weight: bolder;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 5rem;
+}
+
+.collection::before {
+    content: "";
+    position: absolute;
+    background: url(https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(34%);
+    z-index: -2;
+}
+
+.collection h1 {
+    font-size: 4rem;
+}
+
+.shopGrid {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 6rem;
+}
+
+.whole {
+    width: 75%;
+
+    margin: auto;
+}
+
+.gridItem {
+    background: green;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 50rem;
+    width: 35rem;
+}
+
+.bgA {
+    background: url(./../../assets/shopAssets/cat-01.webp);
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bgB {
+    background: url(./../../assets/shopAssets/cat-02.webp);
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bgC {
+    background: url(./../../assets/shopAssets/cat-03.webp);
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bgD {
+    background: url(./../../assets/shopAssets/cat-04.webp);
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bgE {
+    background: url(./../../assets/shopAssets/cat-05.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.bgF {
+    background: url(./../../assets/shopAssets/cat-06.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width:1129px) {
+    .shopGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width:751px) {
+    .gridItem {
+        height: 45rem;
+        width: 30rem;
+    }
+}
+
+@media screen and (max-width:646px) {
+    .gridItem {
+        height: 35rem;
+        width: 20rem;
+    }
+}
+
+@media screen and (max-width:444px) {
+    .shopGrid {
+        grid-template-columns: 1fr;
+        padding: 0 2rem;
+    }
+
+    .bgA,
+    .bgB,
+    .bgC,
+    .bgD,
+    .bgE,
+    .bgF {
+        background-position: top;
+    }
+
+    .gridItem {
+        width: 100%;
+
+    }
+}

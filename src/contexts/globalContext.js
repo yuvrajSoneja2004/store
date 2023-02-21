@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useReducer, useState } from "react";
-import reducer from '../reducers/globalReducer';
+import { reducer, themeReducer, cateogryReducer } from '../reducers/globalReducer';
+import LoadingBar from 'react-top-loading-bar';
 
 // global context
 const GlobalContext = React.createContext();
@@ -18,22 +19,107 @@ export const GlobalProvider = ({ children }) => {
         isLoading: false,
         products: [],
         trendingProducts: [],
-        bestSellingProducts: []
+        bestSellingProducts: [],
+        currentPage: 0,
+        perPage: 10,
+        pageCount: 0,
     }
+
+    // Declaring theme state
+
+    let initialThemeState = {
+        background: '#ffffff',
+        color: '#000000',
+        isDarkMode: false
+
+    }
+
+
+
+
+    const handlePageClick = (data) => {
+        dispatch({ type: 'SET_PAGE', payload: data.selected });
+    };
 
 
     // Requiring GLOBAL state
     const [state, dispatch] = useReducer(reducer, initialState);
 
+
+    const { products, currentPage, perPage, pageCount } = state;
+    const productsToDisplay = products.slice(
+        currentPage * perPage,
+        (currentPage + 1) * perPage
+    );
+
     // global theme
-    const [bgTheme, setBgTheme] = useState({
-        backgroundColor: '#ffffff',
+    // const [bgTheme, setBgTheme] = useState({
+    //     backgroundColor: '#ffffff',
 
-    });
-    const [fontTheme, setFontTheme] = useState({
-        color: '#222222',
+    // });
+    // const [fontTheme, setFontTheme] = useState({
+    //     color: '#222222',
 
+    // });
+
+
+    // Product Page State
+    const [cateState, categoryDispatch] = useReducer(cateogryReducer, {
+        cateLoading: false,
+        currentCategory: []
     });
+    // Global Theme
+
+    const [themeState, dispatchTheme] = useReducer(themeReducer, initialThemeState);
+
+    const themeHandler = () => {
+        if (!themeState.isDarkMode) {
+            dispatchTheme({ type: "TURN_ON_NIGHT_MODE" });
+        }
+        else {
+            dispatchTheme({ type: "TURN_OFF_NIGHT_MODE" });
+        }
+    }
+
+    // Top Loading Data Code
+
+    const [loadingProgress, setLoadingProgress] = useState(0);
+    const loadingSpeedController = () => {
+
+        setTimeout(() => {
+            setLoadingProgress(30);
+        }, 200);
+
+        setTimeout(() => {
+            setLoadingProgress(100);
+        }, 1000);
+
+        setTimeout(() => {
+            LoadingBar.finish();
+        }, 1700);
+
+    }
+
+    // Dynamic images URLs for shop page
+
+
+    const bgLinks = {
+        women: 'https://images.pexels.com/photos/1644888/pexels-photo-1644888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+
+        men: "https://images.pexels.com/photos/1049317/pexels-photo-1049317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+
+        perfumes: "https://images.pexels.com/photos/3910071/pexels-photo-3910071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+
+        footwear: "https://images.pexels.com/photos/267301/pexels-photo-267301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+
+        tech: "https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+
+        sale: "https://images.pexels.com/photos/5662862/pexels-photo-5662862.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+
+
+
+    };
+
 
     // API URL
     let API_URL = "http://localhost:5000";
@@ -48,6 +134,7 @@ export const GlobalProvider = ({ children }) => {
             let res = await fetch.data;
             // console.log(res);
             dispatch({ type: "ALL_PRODUCTS", payload: res });
+
         } catch (error) {
             dispatch({ type: "API_ERROR" });
         }
@@ -100,13 +187,33 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    const getSpecificCategoryProduct = async (ENDPOINT) => {
+        categoryDispatch({ type: "SET_LOADING" })
+        setLoadingProgress(30);
+        try {
+            let fetch = await axios.get(ENDPOINT);
+            setLoadingProgress(50);
+            let res = await fetch.data;
+            console.log(res);
+            setLoadingProgress(100);
+
+            categoryDispatch({ type: "SET_SPECIFIC_CATEGORY", payload: res })
+        } catch (error) {
+            console.log(`Error occured inside getSpecificCategoryProduct function which is defined on line no.190. Still the reason : ${error}`)
+        }
+    }
+
 
     useEffect(() => {
         getData();
     }, [])
 
 
-    return <GlobalContext.Provider value={{ bgTheme, fontTheme, ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch }}
+    return <GlobalContext.Provider value={{
+        ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, productsToDisplay, handlePageClick,
+        themeState, themeHandler, loadingProgress, setLoadingProgress, loadingSpeedController,
+        bgLinks, getSpecificCategoryProduct, ...cateState
+    }}
 
     >{children}</GlobalContext.Provider>
 };
@@ -116,3 +223,7 @@ export const GlobalProvider = ({ children }) => {
 export const useGlobalContext = () => {
     return React.useContext(GlobalContext);
 }
+
+
+
+

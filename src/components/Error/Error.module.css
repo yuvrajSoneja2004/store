@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    height: 80vh;
+}
+
+.content {
+    text-align: center;
+}
+
+.content h1 {
+    font-size: 6rem;
+    font-weight: bolder;
+    margin: 2rem 0;
+}
+
+.content img {
+    width: 50vw;
+    margin: 1.7rem 0;
+}
+
+
+/* Responsive code  */
+@media screen and (max-width: 800) {
+    .content img {}
+}
