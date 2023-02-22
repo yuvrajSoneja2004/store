@@ -24,6 +24,12 @@ let reducer = (state, action) => {
                 bestSellingProducts: bestSellerData
 
             }
+        case "SINGLE_PRODUCT_DATA":
+            return {
+                ...state,
+                isLoading: false,
+                singleProduct: action.payload
+            }
 
         case "ASENDING_DATA":
             return {
@@ -106,10 +112,17 @@ let cateogryReducer = (state, action) => {
 
         case "SET_SPECIFIC_CATEGORY":
             return {
+                ...state,
                 cateLoading: false,
                 currentCategory: action.payload
             }
 
+        case "CATEGORY_NETWERK_ERROR":
+            return {
+                ...state,
+                isErrorOccured: true,
+                cateLoading: false
+            }
 
 
         default:

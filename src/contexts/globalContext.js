@@ -23,6 +23,7 @@ export const GlobalProvider = ({ children }) => {
         currentPage: 0,
         perPage: 10,
         pageCount: 0,
+        singleProduct: []
     }
 
     // Declaring theme state
@@ -52,6 +53,10 @@ export const GlobalProvider = ({ children }) => {
         (currentPage + 1) * perPage
     );
 
+    // setInterval(() => {
+    //     console.log(state.singleProduct)
+    // }, 1000);
+
     // global theme
     // const [bgTheme, setBgTheme] = useState({
     //     backgroundColor: '#ffffff',
@@ -66,7 +71,8 @@ export const GlobalProvider = ({ children }) => {
     // Product Page State
     const [cateState, categoryDispatch] = useReducer(cateogryReducer, {
         cateLoading: false,
-        currentCategory: []
+        currentCategory: [],
+        isErrorOcurred: false
     });
     // Global Theme
 
@@ -199,20 +205,40 @@ export const GlobalProvider = ({ children }) => {
 
             categoryDispatch({ type: "SET_SPECIFIC_CATEGORY", payload: res })
         } catch (error) {
-            console.log(`Error occured inside getSpecificCategoryProduct function which is defined on line no.190. Still the reason : ${error}`)
+            console.log(`Error occured inside getSpecificCategoryProduct function which is defined on line no.190. Still the reason : ${error}`);
+            categoryDispatch({ type: "CATEGORY_NETWERK_ERROR" })
+            setLoadingProgress(100);
+        }
+    }
+
+    const getSingleProduct = async (ENDPOINT) => {
+        dispatch({ type: "API_LOADING" });
+        setLoadingProgress(30);
+        try {
+            let fetch = await axios.get(ENDPOINT);
+            setLoadingProgress(50);
+            let res = await fetch.data;
+            console.log(res);
+            setLoadingProgress(100);
+            dispatch({ type: "SINGLE_PRODUCT_DATA", payload: res });
+        } catch (error) {
+            console.log(`Error occured inside getSpecificCategoryProduct function which is defined on line no.190. Still the reason : ${error}`);
+            setLoadingProgress(100);
         }
     }
 
 
+
     useEffect(() => {
         getData();
+        getSingleProduct("http://localhost:5000/singleProduct/63e0f6162f4be155c286ae42");
     }, [])
 
 
     return <GlobalContext.Provider value={{
         ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, productsToDisplay, handlePageClick,
         themeState, themeHandler, loadingProgress, setLoadingProgress, loadingSpeedController,
-        bgLinks, getSpecificCategoryProduct, ...cateState
+        bgLinks, getSpecificCategoryProduct, ...cateState, getSingleProduct
     }}
 
     >{children}</GlobalContext.Provider>

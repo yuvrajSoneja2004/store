@@ -10,6 +10,8 @@ function Shop() {
     let { loadingSpeedController, setLoadingProgress } = useGlobalContext();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+
         setTimeout(() => {
             setLoadingProgress(30);
         }, 200);
@@ -17,6 +19,7 @@ function Shop() {
         setTimeout(() => {
             setLoadingProgress(100);
         }, 1000);
+
 
     }, [])
     return (

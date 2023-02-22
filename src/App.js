@@ -11,6 +11,7 @@ import LoadingBar from 'react-top-loading-bar'
 import { useGlobalContext } from './contexts/globalContext';
 import Error from './components/Error/Error';
 import SingleTypeProduct from './components/SingleTypeProduct/SingleTypeProduct';
+import SingleProduct from './pages/SingleProduct/SingleProduct';
 function App() {
 
   let { loadingProgress, setLoadingProgress, themeState, } = useGlobalContext();
@@ -33,6 +34,9 @@ function App() {
         <Route path='/shop' element={<Shop />} />
         <Route path='*' element={<Error />} />
         <Route path='/products/:category' element={<SingleTypeProduct />} />
+        <Route path='/single-product-page/:product_id' element={<SingleProduct />} />
+        <Route path='products/:type/single-product-page/:product_id' element={<SingleProduct />} />
+        <Route path='products/single-product-page/:product_id' element={<SingleProduct />} />
       </Routes>
       <Footer />
     </>

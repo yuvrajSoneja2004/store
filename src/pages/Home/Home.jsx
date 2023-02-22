@@ -1,4 +1,5 @@
 import React from 'react'
+import { useEffect } from 'react'
 import BestSellerSection from '../../components/BestSellerSection/BestSellerSection'
 import GenreSection from '../../components/GenreSection/GenreSection'
 import Homeheadings from '../../components/HomeHeadings/Homeheadings'
@@ -9,6 +10,10 @@ import TrendingSection from '../../components/TrendingSection/TrendingSection'
 
 
 function Home() {
+
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, [])
     return (
         <>
             <HomeSlider />

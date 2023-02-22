@@ -7,15 +7,17 @@ import ProductCard from '../ProductCard/ProductCard';
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
 import { useEffect } from 'react';
+import ErrorB from '../ErrorB/ErrorB';
 
 function SingleTypeProduct() {
-    let { cateLoading, getSpecificCategoryProduct, currentCategory } = useGlobalContext();
+    let { cateLoading, getSpecificCategoryProduct, currentCategory, isErrorOccured } = useGlobalContext();
 
     let { category } = useParams();
 
 
     // Update the endpoint later
     useEffect(() => {
+        window.scrollTo(0, 0);
 
 
         if (category === "sale") {
@@ -31,6 +33,10 @@ function SingleTypeProduct() {
 
     if (cateLoading) {
         return <Loader />
+    }
+
+    if (isErrorOccured) {
+        return <ErrorB />
     }
     return (
         <>

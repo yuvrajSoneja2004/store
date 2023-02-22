@@ -7,10 +7,10 @@
     position: relative;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    position: absolute;
+    /* position: absolute;
     left: 0;
     right: 0;
-    top: 50%;
+    top: 50%; */
     margin-left: auto;
     margin-right: auto;
 }
