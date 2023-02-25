@@ -12,6 +12,11 @@ import { useGlobalContext } from './contexts/globalContext';
 import Error from './components/Error/Error';
 import SingleTypeProduct from './components/SingleTypeProduct/SingleTypeProduct';
 import SingleProduct from './pages/SingleProduct/SingleProduct';
+import Cart from './components/Cart/Cart';
+import BasicExample from './TestNav';
+import NavigationBar from './components/NavigationBar/NavigationBar';
+import Wishlist from './components/Wishlist/Wishlist';
+import ContactMe from './components/ContactMe/ContactMe';
 function App() {
 
   let { loadingProgress, setLoadingProgress, themeState, } = useGlobalContext();
@@ -20,7 +25,9 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <NavigationBar />
+      {/* <Navbar />  boy boy !  */}
+
       <LoadingBar
         color={themeState.color}
         progress={loadingProgress}
@@ -28,10 +35,13 @@ function App() {
         transitionTime={300}
         loaderSpeed={150}
       />
-      <Routes>
+      <Routes >
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} />
         <Route path='/shop' element={<Shop />} />
+        <Route path='/cart' element={<Cart />} />
+        <Route path='/wishlist' element={<Wishlist />} />
+        <Route path='/contact' element={<ContactMe />} />
         <Route path='*' element={<Error />} />
         <Route path='/products/:category' element={<SingleTypeProduct />} />
         <Route path='/single-product-page/:product_id' element={<SingleProduct />} />

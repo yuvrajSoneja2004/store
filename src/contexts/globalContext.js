@@ -23,15 +23,17 @@ export const GlobalProvider = ({ children }) => {
         currentPage: 0,
         perPage: 10,
         pageCount: 0,
-        singleProduct: []
+        singleProduct: [],
+        alsoBuy: [],
+        cart: [],
     }
 
     // Declaring theme state
 
     let initialThemeState = {
-        background: '#ffffff',
-        color: '#000000',
-        isDarkMode: false
+        background: '#ffffff !important',
+        color: '#000000 !important',
+        isDarkMode: false,
 
     }
 
@@ -221,9 +223,23 @@ export const GlobalProvider = ({ children }) => {
             console.log(res);
             setLoadingProgress(100);
             dispatch({ type: "SINGLE_PRODUCT_DATA", payload: res });
+            dispatch({ type: "ALSO_BUY_DATA", payload: res });
+
         } catch (error) {
             console.log(`Error occured inside getSpecificCategoryProduct function which is defined on line no.190. Still the reason : ${error}`);
             setLoadingProgress(100);
+        }
+    }
+    const getAlsoBuy = async (ENDPOINT) => {
+        dispatch({ type: "API_LOADING" });
+        try {
+            let fetch = await axios.get(ENDPOINT);
+            let res = await fetch.data;
+            console.log(res);
+            dispatch({ type: "ALSO_BUY_DATA", payload: res });
+
+        } catch (error) {
+            console.log(`helelelelele : ${error}`);
         }
     }
 
@@ -232,13 +248,16 @@ export const GlobalProvider = ({ children }) => {
     useEffect(() => {
         getData();
         getSingleProduct("http://localhost:5000/singleProduct/63e0f6162f4be155c286ae42");
+
+
     }, [])
 
 
     return <GlobalContext.Provider value={{
         ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, productsToDisplay, handlePageClick,
         themeState, themeHandler, loadingProgress, setLoadingProgress, loadingSpeedController,
-        bgLinks, getSpecificCategoryProduct, ...cateState, getSingleProduct
+        bgLinks, getSpecificCategoryProduct, ...cateState, getSingleProduct,
+        getAlsoBuy
     }}
 
     >{children}</GlobalContext.Provider>

@@ -6,10 +6,10 @@ import ProductCard from '../ProductCard/ProductCard';
 function TrendingSection() {
     const [hasToLoad, sethasToLoad] = useState(false);
     const [hidingStyles, setHidingStyles] = useState({ display: 'block' });
-    let { trendingProducts } = useGlobalContext();
+    let { trendingProducts, themeState } = useGlobalContext();
     console.log(trendingProducts)
     return (
-        <div>
+        <div style={themeState}>
             {/* dynamic  code here  */}
             <div className={S.grid}>
                 {/* {

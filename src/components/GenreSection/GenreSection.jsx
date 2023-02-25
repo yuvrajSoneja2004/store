@@ -1,10 +1,13 @@
 import React from "react";
+import { useGlobalContext } from "../../contexts/globalContext";
 import CategoryButton from "../CategoryButton/CategoryButton";
 import S from './GenreSection.module.css';
 
 const GenreSection = () => {
+    let { themeState } = useGlobalContext();
+
     return (
-        <div className={S.gridCen}>
+        <div className={S.gridCen} style={themeState}>
             <div className={S.wrapper}>
                 <div className={`${S.gridItem} ${S.gA}`}><CategoryButton type="Women" path='/products/women' /></div>
                 <div className={`${S.gridItem} ${S.gB}`}><CategoryButton type="Accessories" path='/' /></div>

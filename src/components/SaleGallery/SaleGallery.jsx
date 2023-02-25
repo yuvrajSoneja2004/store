@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../contexts/globalContext';
 import S from './SaleGallery.module.css';
 
 function SaleGallery() {
+    let { themeState } = useGlobalContext();
     return (
-        <div className={S.wrapper}>
+        <div className={S.wrapper} style={themeState}>
             <Link to='/' className={S.rmLink}>
                 <div className={`${S.bxA} ${S.bx}`}>
                     <div className={S.content}>

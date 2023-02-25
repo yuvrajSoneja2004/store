@@ -5,10 +5,9 @@ import S from './BestSellerSection.module.css';
 
 function BestSellerSection() {
 
-    let { bestSellingProducts } = useGlobalContext();
-    console.log(bestSellingProducts)
+    let { bestSellingProducts, themeState } = useGlobalContext();
     return (
-        <div className={S.grid}>
+        <div className={S.grid} style={themeState}>
             {
                 bestSellingProducts.slice(0, 6).map((prod) => {
                     return <ProductCard data={prod} key={prod._id} />

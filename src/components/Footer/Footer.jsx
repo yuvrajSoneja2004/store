@@ -3,14 +3,16 @@ import S from "./Footer.module.css";
 import { CiLocationOn, CiMail, CiPhone } from 'react-icons/ci';
 import { GrFacebookOption, GrInstagram, GrLinkedinOption, GrPinterest, GrTwitter } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../contexts/globalContext';
 
 function Footer() {
 
     let iconSize = 28;
     let smIconSize = 23;
+    let { themeState } = useGlobalContext();
     return (
 
-        <div className={S.wrapper}>
+        <div className={S.wrapper} style={themeState}>
             <div className={S.grid}>
                 <div className={`${S.secA} ${S.listFlex}`}>
                     <img src="./assets/lo.png" alt="logo" width={250} />
@@ -62,4 +64,4 @@ function Footer() {
     )
 }
 
-export default Footer
+export default Footer;

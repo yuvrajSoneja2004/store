@@ -11,7 +11,9 @@ import ReactPaginate from 'react-paginate';
 
 function Products() {
 
-
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
 
     const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, productsToDisplay, pageCount, handlePageClick, setLoadingProgress, loadingSpeedController } = useGlobalContext();

@@ -30,6 +30,16 @@ let reducer = (state, action) => {
                 isLoading: false,
                 singleProduct: action.payload
             }
+        case "ALSO_BUY_DATA":
+            return {
+                ...state,
+                alsoBuy: action.payload
+            }
+        case "CLEAR_DATA":
+            return {
+                ...state
+            }
+
 
         case "ASENDING_DATA":
             return {
@@ -73,6 +83,21 @@ let reducer = (state, action) => {
                 currentPage: action.payload,
             };
 
+        case "ADD_TO_CART":
+
+            return {
+                ...state,
+                cart: [...state.cart, { ...action.payload }]
+            }
+
+
+        case "REMOVE_FROM_CART":
+
+            return {
+                ...state,
+                cart: state.cart.filter((c) => c._id !== action.payload._id)
+            }
+
         default:
             return state;
     }
@@ -84,14 +109,14 @@ let themeReducer = (state, action) => {
         case 'TURN_ON_NIGHT_MODE':
             return {
                 isDarkMode: true,
-                background: '#000',
-                color: '#ffffff'
+                background: '#121212',
+                color: '#ffffff',
             }
         case 'TURN_OFF_NIGHT_MODE':
             return {
                 isDarkMode: false,
                 background: '#ffffff',
-                color: '#000000'
+                color: '#000000',
             }
 
 
