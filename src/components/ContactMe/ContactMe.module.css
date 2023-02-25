@@ -1,0 +1,61 @@
+.wrapper {
+    text-align: center;
+
+}
+
+.wrapper h1 {
+    padding: 2rem 0;
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
+.map iframe {
+    width: 100%;
+}
+
+.form {
+    max-width: 100%;
+    padding-top: 4rem;
+}
+
+.form form {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 3rem;
+    font-size: 1.6rem;
+
+}
+
+.form input,
+.form textarea {
+    width: 33%;
+    padding: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: none;
+    border: 1px solid #878787
+}
+
+.form button {
+    border: none;
+    background: none;
+
+}
+
+@media screen and (max-width: 784px) {
+
+    .form input,
+    .form textarea {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 478px) {
+
+    .form input,
+    .form textarea {
+        width: 80%;
+    }
+}

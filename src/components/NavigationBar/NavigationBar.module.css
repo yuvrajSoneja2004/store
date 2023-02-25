@@ -77,12 +77,12 @@
 }
 
 @media (max-width: 324px) {
-    .mobileNav {
+    /* .mobileNav {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
         margin-left: 0 !important;
-    }
+    } */
 }
 
 @media (max-width: 593px) {
