@@ -5,7 +5,6 @@ import { Dropdown } from 'react-bootstrap';
 import { useGlobalContext, useLoader } from '../../contexts/globalContext';
 import Loader from '../../components/Loader/Loader'
 import ProductCard from '../../components/ProductCard/ProductCard';
-import ReactPaginate from 'react-paginate';
 // import Cumb from '../../components/Cumb/Cumb';
 
 
@@ -16,7 +15,7 @@ function Products() {
     }, [])
 
 
-    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, productsToDisplay, pageCount, handlePageClick, setLoadingProgress, loadingSpeedController } = useGlobalContext();
+    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, pageCount, handlePageClick, setLoadingProgress, loadingSpeedController, themeState } = useGlobalContext();
 
     useEffect(loadingSpeedController, [])
 
@@ -69,9 +68,10 @@ function Products() {
             {/* <Cumb title='Products' bgUrl='https://images.pexels.com/photos/713829/pexels-photo-713829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' /> */}
             {/* Products data  */}
 
-            <div className={S.container}>
+            <div className={S.container} style={themeState}>
                 <div className={S.filterNav}>
-                    <div className={S.fil}><CiFilter width={25} /> <span>Filter</span></div>
+                    {/* <div className={S.fil}><CiFilter width={25} /> <span>Filter</span></div> */}
+                    <div></div>
                     <div className={S.lay}>
 
                         <div className={S.layoutIcons} onClick={layoutAFun}>
@@ -112,20 +112,13 @@ function Products() {
                         })
                     } */}
                     {
-                        productsToDisplay.map((product) => {
+                        products.map((product) => {
                             return <ProductCard data={product} key={product._id} wid={cardWidth} />
                         })
 
                     }
                 </div>
-                <ReactPaginate
-                    pageCount={pageCount}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={5}
-                    onPageChange={handlePageClick}
-                    containerClassName={'pagination'}
-                    activeClassName={'active'}
-                />
+
             </div>
 
 

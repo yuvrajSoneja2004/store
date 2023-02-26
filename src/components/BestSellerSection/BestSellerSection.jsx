@@ -7,7 +7,7 @@ function BestSellerSection() {
 
     let { bestSellingProducts, themeState } = useGlobalContext();
     return (
-        <div className={S.grid} style={themeState}>
+        <div className={S.grid} style={themeState} data-aos="fade-up">
             {
                 bestSellingProducts.slice(0, 6).map((prod) => {
                     return <ProductCard data={prod} key={prod._id} />

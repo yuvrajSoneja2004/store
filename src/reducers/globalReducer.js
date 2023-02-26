@@ -83,6 +83,12 @@ let reducer = (state, action) => {
                 currentPage: action.payload,
             };
 
+        case "SEND_SEARCH_DATA":
+            return {
+                ...state,
+                searchRes: action.payload
+            }
+
         case "ADD_TO_CART":
 
             return {

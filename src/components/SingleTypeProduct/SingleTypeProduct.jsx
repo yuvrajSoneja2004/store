@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import ErrorB from '../ErrorB/ErrorB';
 
 function SingleTypeProduct() {
-    let { cateLoading, getSpecificCategoryProduct, currentCategory, isErrorOccured } = useGlobalContext();
+    let { cateLoading, getSpecificCategoryProduct, currentCategory, isErrorOccured, themeState } = useGlobalContext();
 
     let { category } = useParams();
 
@@ -41,7 +41,7 @@ function SingleTypeProduct() {
     return (
         <>
             <ShopCumb categoryType={category} />
-            <div className={S.grid}>
+            <div className={S.grid} style={themeState}>
                 {
                     currentCategory.map((currentProduct) => {
                         return <ProductCard data={currentProduct} />

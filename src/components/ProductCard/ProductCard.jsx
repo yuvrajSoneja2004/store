@@ -16,8 +16,8 @@ function ProductCard({ data, wid }) {
     return (
 
         // <div className={S.card} style={wid} onClick={() => { navigate(`/single-product-page/${data._id}`) }}>
-        <Link to={`/single-product-page/${data._id}`} className={S.noLink} style={themeState}>
-            <div className={S.card} style={wid} onClick={() => { navigate(`/single-product-page/${data._id}`) }}>
+        <Link to={`/single-product-page/${data._id}`} className={S.noLink} >
+            <div className={S.card} style={{ ...wid, ...themeState }} onClick={() => { navigate(`/single-product-page/${data._id}`) }}>
                 <div className={S.productImg}> <img src={data.images[0]} alt={data._id} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} /></div>
                 <div className={S.productDetails}>
                     <label style={{ color: '#878787', marginBottom: '.3rem', textTransform: 'capitalize' }}>{data.company}</label>

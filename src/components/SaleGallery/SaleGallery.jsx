@@ -6,8 +6,8 @@ import S from './SaleGallery.module.css';
 function SaleGallery() {
     let { themeState } = useGlobalContext();
     return (
-        <div className={S.wrapper} style={themeState}>
-            <Link to='/' className={S.rmLink}>
+        <div className={S.wrapper} style={themeState} data-aos="fade-up-left">
+            <Link to='/products/tech' className={S.rmLink}>
                 <div className={`${S.bxA} ${S.bx}`}>
                     <div className={S.content}>
                         <h2>lookbook 2023</h2>
@@ -15,7 +15,7 @@ function SaleGallery() {
                     </div>
                 </div>
             </Link>
-            <Link to='/' className={S.rmLink}>
+            <Link to='/products/sale' className={S.rmLink}>
                 <div className={`${S.bxB} ${S.bx}`}>
                     <div className={S.content}>
                         <h4>summer sale</h4>

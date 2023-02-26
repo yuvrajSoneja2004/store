@@ -8,14 +8,14 @@ import Sed from '../../assets/sed.jpg'
 
 function Cart() {
 
-    let { cart } = useGlobalContext();
+    let { cart, themeState } = useGlobalContext();
 
     useEffect(() => {
         window.scroll(0, 0);
     }, [cart])
 
     if (cart.length === 0) {
-        return <div className={S.noItems}>
+        return <div className={S.noItems} style={themeState}>
             <img src={Sed} alt="sed" />
             <h1>Cart is Empty.</h1>
             <Link to='/products'>  <div className={S.addToCart}><button>Shop Products</button></div></Link>
@@ -23,7 +23,7 @@ function Cart() {
     }
 
     return (
-        <div className={S.wrapper}>
+        <div className={S.wrapper} style={themeState}>
 
             <div className={S.box}>
                 <div className={S.headerRow}>

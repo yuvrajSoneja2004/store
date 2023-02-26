@@ -2,6 +2,10 @@ html {
     font-family: 'Poppins', sans-serif;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 ::-webkit-scrollbar {
     width: 100px;
     background: green;

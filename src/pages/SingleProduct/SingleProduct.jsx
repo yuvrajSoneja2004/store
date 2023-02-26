@@ -125,12 +125,6 @@ function SingleProduct() {
                                 }}>Add to cart</button> </div>
 
                         </Link>
-                        <Link to='/wishlist'>
-                            <div className={S.wishListIcon} style={{ border: "2px solid red" }}>
-                                <CgHeart style={{ fontSize: '3.7rem' }} />
-
-                            </div>
-                        </Link>
                     </div>
 
 

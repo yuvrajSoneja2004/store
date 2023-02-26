@@ -6,6 +6,7 @@ function Homeheadings({ title, desc }) {
 
     let { themeState } = useGlobalContext();
     return (
+
         <div className={S.wrapper} style={themeState}>
 
             <div className={S.cont}>
@@ -17,6 +18,7 @@ function Homeheadings({ title, desc }) {
                 <p>{desc}</p>
             </div>
         </div>
+
     )
 }
 

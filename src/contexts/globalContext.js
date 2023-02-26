@@ -20,12 +20,10 @@ export const GlobalProvider = ({ children }) => {
         products: [],
         trendingProducts: [],
         bestSellingProducts: [],
-        currentPage: 0,
-        perPage: 10,
-        pageCount: 0,
         singleProduct: [],
         alsoBuy: [],
         cart: [],
+        searchRes: []
     }
 
     // Declaring theme state
@@ -36,6 +34,28 @@ export const GlobalProvider = ({ children }) => {
         isDarkMode: false,
 
     }
+
+    //Search data and code
+    const [inputData, setInputData] = useState("");
+
+
+    const getSearchData = async (ENDPOINT) => {
+        dispatch({ type: 'SET_LOADING' });
+        try {
+            let fetch = await axios.get(ENDPOINT);
+            let res = await fetch.data;
+            dispatch({ type: "SEND_SEARCH_DATA", payload: res })
+        } catch (error) {
+            console.log(error)
+            dispatch({ type: "API_ERROR" })
+        }
+    }
+
+    const onSearch = () => {
+        getSearchData(`http://localhost:5000/?name=${inputData}`);
+    }
+
+
 
 
 
@@ -49,11 +69,6 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
 
-    const { products, currentPage, perPage, pageCount } = state;
-    const productsToDisplay = products.slice(
-        currentPage * perPage,
-        (currentPage + 1) * perPage
-    );
 
     // setInterval(() => {
     //     console.log(state.singleProduct)
@@ -248,16 +263,20 @@ export const GlobalProvider = ({ children }) => {
     useEffect(() => {
         getData();
         getSingleProduct("http://localhost:5000/singleProduct/63e0f6162f4be155c286ae42");
+        let topics = ["watch", "men", "sam"];
+        var topic = topics[Math.floor(Math.random() * topics.length)];
+        setInputData(topic)
+        onSearch();
 
 
     }, [])
 
 
     return <GlobalContext.Provider value={{
-        ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, productsToDisplay, handlePageClick,
+        ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, handlePageClick,
         themeState, themeHandler, loadingProgress, setLoadingProgress, loadingSpeedController,
         bgLinks, getSpecificCategoryProduct, ...cateState, getSingleProduct,
-        getAlsoBuy
+        getAlsoBuy, inputData, setInputData, onSearch
     }}
 
     >{children}</GlobalContext.Provider>

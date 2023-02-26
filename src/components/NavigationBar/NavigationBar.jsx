@@ -1,13 +1,12 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import S from './NavigationBar.module.css';
 import Logo from '../../assets/logo.png'
 import InvertedLogo from '../../assets/logoInverted.png'
 import { useGlobalContext } from '../../contexts/globalContext';
-import { CiHeart, CiSearch, CiShoppingCart } from 'react-icons/ci';
+import { CiSearch, CiShoppingCart } from 'react-icons/ci';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import "../Navbar/navbar.css";
 function NavigationBar() {
@@ -15,7 +14,7 @@ function NavigationBar() {
     let { themeState, themeHandler, cart } = useGlobalContext();
 
     return (
-        <Navbar style={themeState} expand="lg">
+        <Navbar style={themeState} expand="lg" className={S.navB}>
             <Container className={S.wrapper}>
                 <Link to='/' style={{ margin: '1rem' }}> <Navbar.Brand><img src={!themeState.isDarkMode ? Logo : InvertedLogo} alt="logo" width={110} /></Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className={!themeState.isDarkMode ? `${S.myToggleB}` : `${S.myToggle}`} />
@@ -25,7 +24,7 @@ function NavigationBar() {
                         <Nav.Link className={S.navLink}><Link to='/shop' className={`${S.noLink} cumb`} > <span className="spanNew">New</span><strong style={themeState}>Shop</strong></Link></Nav.Link>
                         <Nav.Link className={S.navLink}><Link to='/products' className={S.noLink}><strong style={themeState}>Products</strong></Link></Nav.Link>
                         <Nav.Link className={S.navLink}><Link to='/products/sale' className={`${S.noLink} cumb`} > <span className="spanSale">Sale</span><strong style={themeState}>Sale</strong></Link></Nav.Link>
-                        <Nav.Link className={S.navLink}><Link to='/' className={S.noLink}><strong style={themeState}>About</strong></Link></Nav.Link>
+                        <Nav.Link className={S.navLink}><Link to='/about' className={S.noLink}><strong style={themeState}>About</strong></Link></Nav.Link>
                         <Nav.Link className={S.navLink}><Link to='/contact' className={S.noLink}><strong style={themeState}>Contact</strong></Link></Nav.Link>
                         <div className={S.sm}>
                             <span

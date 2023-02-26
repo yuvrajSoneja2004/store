@@ -36,6 +36,7 @@
     place-items: center;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 6rem;
+    padding-top: 5rem;
 }
 
 .whole {

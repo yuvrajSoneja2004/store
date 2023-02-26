@@ -10,9 +10,9 @@ const GenreSection = () => {
         <div className={S.gridCen} style={themeState}>
             <div className={S.wrapper}>
                 <div className={`${S.gridItem} ${S.gA}`}><CategoryButton type="Women" path='/products/women' /></div>
-                <div className={`${S.gridItem} ${S.gB}`}><CategoryButton type="Accessories" path='/' /></div>
-                <div className={`${S.gridItem} ${S.gC}`}><CategoryButton type="Footwear" path='/' /></div>
-                <div className={`${S.gridItem} ${S.gD}`}><CategoryButton type="Watches" path='/' /></div>
+                <div className={`${S.gridItem} ${S.gB}`}><CategoryButton type="Perfumes" path='/products/perfumes' /></div>
+                <div className={`${S.gridItem} ${S.gC}`}><CategoryButton type="Footwear" path='/products/footwear' /></div>
+                <div className={`${S.gridItem} ${S.gD}`}><CategoryButton type="Men" path='/products/men' /></div>
             </div>
         </div>
     )

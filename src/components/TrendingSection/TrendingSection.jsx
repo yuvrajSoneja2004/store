@@ -11,7 +11,7 @@ function TrendingSection() {
     return (
         <div style={themeState}>
             {/* dynamic  code here  */}
-            <div className={S.grid}>
+            <div className={S.grid} data-aos="fade-up">
                 {/* {
                     
                     })

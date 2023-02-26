@@ -32,29 +32,29 @@ function Footer() {
                     </div>
                     <div className={S.sm}>
                         <a href="https://google.com" target='_blank'><GrFacebookOption size={smIconSize} className={S.fb} /></a>
-                        <a href="https://google.com" target='_blank'> <GrTwitter size={smIconSize} className={S.twitter} /></a>
-                        <a href="https://google.com" target='_blank'>  <GrInstagram size={smIconSize} className={S.insta} /></a>
-                        <a href="https://google.com" target='_blank'> <GrLinkedinOption size={smIconSize} className={S.lin} /></a>
+                        <a href="https://twitter.com/YuvrajDev7524" target='_blank'> <GrTwitter size={smIconSize} className={S.twitter} /></a>
+                        <a href="https://www.instagram.com/yuvraj_soneja/" target='_blank'>  <GrInstagram size={smIconSize} className={S.insta} /></a>
+                        <a href="https://www.linkedin.com/in/yuvrajsoneja/" target='_blank'> <GrLinkedinOption size={smIconSize} className={S.lin} /></a>
                         <a href="https://google.com" target='_blank'><GrPinterest size={smIconSize} className={S.pintrs} /></a>
                     </div>
                 </div>
                 <div className={`${S.secB} ${S.listFlex}`}>
                     <strong>Categories</strong>
-                    <Link className={S.footerLink} to='/'>Men</Link>
-                    <Link className={S.footerLink} to='/'>Women</Link>
-                    <Link className={S.footerLink} to='/'>Watch</Link>
-                    <Link className={S.footerLink} to='/'>Shoes</Link>
-                    <Link className={S.footerLink} to='/'>Accessories</Link>
+                    <Link className={S.footerLink} to='/products/men'>Men</Link>
+                    <Link className={S.footerLink} to='/products/women'>Women</Link>
+                    <Link className={S.footerLink} to='/products/tech'>Tech</Link>
+                    <Link className={S.footerLink} to='/products/footwear'>Footwear</Link>
+                    <Link className={S.footerLink} to='/products/perfumes'>Perfumes</Link>
                 </div>
                 <div className={`${S.secC} ${S.listFlex}`}>
                     <strong>Useful Links</strong>
-                    <Link className={S.footerLink} to='/'>About</Link>
-                    <Link className={S.footerLink} to='/'>Contact</Link>
-                    <Link className={S.footerLink} to='/'>Shop</Link>
+                    <Link className={S.footerLink} to='/about'>About</Link>
+                    <Link className={S.footerLink} to='/contact'>Contact</Link>
+                    <Link className={S.footerLink} to='/shop'>Shop</Link>
                 </div>
                 <div className={`${S.secD} ${S.listFlex}`}>
                     <strong>Go To Search Tab</strong>
-                    <Link className={S.footerLink} to='/'>
+                    <Link className={S.footerLink} to='/search'>
                         <input type="text" placeholder='Click Me' className={S.footerInput} />
                     </Link>
 

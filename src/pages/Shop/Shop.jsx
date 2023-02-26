@@ -7,7 +7,7 @@ import CategoryButton from '../../components/CategoryButton/CategoryButton';
 // import Cumb from '../../components/Cumb/Cumb'
 
 function Shop() {
-    let { loadingSpeedController, setLoadingProgress } = useGlobalContext();
+    let { loadingSpeedController, setLoadingProgress, themeState } = useGlobalContext();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -25,12 +25,12 @@ function Shop() {
     return (
         <>
             <div className={S.wrapper}>
-                <div className={S.collection}>
+                <div className={S.collection} style={{ margin: '0', paddingBottom: '7rem !important' }}>
                     <h1>Collection</h1>
                 </div>
 
 
-                <div className={S.shopGrid}>
+                <div className={S.shopGrid} style={themeState}>
                     <div className={`${S.gridItem} ${S.bgA}`}><CategoryButton type="Women" path='/products/women' /></div>
                     <div className={`${S.gridItem} ${S.bgB}`}><CategoryButton type="Men" path='/products/men' /></div>
                     <div className={`${S.gridItem} ${S.bgC}`}><CategoryButton type="Perfumes" path='/products/perfumes' /></div>
