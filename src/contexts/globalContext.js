@@ -52,7 +52,7 @@ export const GlobalProvider = ({ children }) => {
     }
 
     const onSearch = () => {
-        getSearchData(`http://localhost:5000/?name=${inputData}`);
+        getSearchData(`https://purple-anemone-veil.cyclic.app/?name=${inputData}`);
     }
 
 
@@ -145,7 +145,7 @@ export const GlobalProvider = ({ children }) => {
 
 
     // API URL
-    let API_URL = "http://localhost:5000";
+    let API_URL = "https://purple-anemone-veil.cyclic.app/";
 
     // Fetching data from API
 
@@ -165,7 +165,7 @@ export const GlobalProvider = ({ children }) => {
     const getAsendingData = async () => {
         dispatch({ type: 'API_LOADING' });
         try {
-            let fetch = await axios.get('http://localhost:5000/asending');
+            let fetch = await axios.get('https://purple-anemone-veil.cyclic.app/asending');
             let asendingRes = await fetch.data;
             // console.log(res);
             dispatch({ type: "ASENDING_DATA", payload: asendingRes });
@@ -176,7 +176,7 @@ export const GlobalProvider = ({ children }) => {
     const getDesendingData = async () => {
         dispatch({ type: 'API_LOADING' });
         try {
-            let fetch = await axios.get('http://localhost:5000/desending');
+            let fetch = await axios.get('https://purple-anemone-veil.cyclic.app/desending');
             let desendingRes = await fetch.data;
             // console.log(res);
             dispatch({ type: "DESENDING_DATA", payload: desendingRes });
@@ -190,7 +190,7 @@ export const GlobalProvider = ({ children }) => {
     const getLowToHigh = async () => {
         dispatch({ type: 'API_LOADING' });
         try {
-            let fetch = await axios.get('http://localhost:5000/lowToHigh');
+            let fetch = await axios.get('https://purple-anemone-veil.cyclic.app/lowToHigh');
             let resDat = await fetch.data;
             // console.log(res);
             dispatch({ type: "PRICE_LOW_TO_HIGH", payload: resDat });
@@ -201,7 +201,7 @@ export const GlobalProvider = ({ children }) => {
     const getHighToLow = async () => {
         dispatch({ type: 'API_LOADING' });
         try {
-            let fetch = await axios.get('http://localhost:5000/highToLow');
+            let fetch = await axios.get('https://purple-anemone-veil.cyclic.app/highToLow');
             let resDat = await fetch.data;
             // console.log(res);
             dispatch({ type: "PRICE_HIGH_TO_LOW", payload: resDat });
@@ -262,7 +262,7 @@ export const GlobalProvider = ({ children }) => {
 
     useEffect(() => {
         getData();
-        getSingleProduct("http://localhost:5000/singleProduct/63e0f6162f4be155c286ae42");
+        getSingleProduct("https://purple-anemone-veil.cyclic.app/singleProduct/63e0f6162f4be155c286ae42");
         let topics = ["watch", "men", "sam"];
         var topic = topics[Math.floor(Math.random() * topics.length)];
         setInputData(topic)

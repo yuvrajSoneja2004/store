@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import S from './Products.module.css';
-import { CiFilter } from 'react-icons/ci';
 import { Dropdown } from 'react-bootstrap';
-import { useGlobalContext, useLoader } from '../../contexts/globalContext';
+import { useGlobalContext } from '../../contexts/globalContext';
 import Loader from '../../components/Loader/Loader'
 import ProductCard from '../../components/ProductCard/ProductCard';
 // import Cumb from '../../components/Cumb/Cumb';
@@ -15,7 +14,7 @@ function Products() {
     }, [])
 
 
-    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, pageCount, handlePageClick, setLoadingProgress, loadingSpeedController, themeState } = useGlobalContext();
+    const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, loadingSpeedController, themeState } = useGlobalContext();
 
     useEffect(loadingSpeedController, [])
 
@@ -65,12 +64,10 @@ function Products() {
 
         <>
 
-            {/* <Cumb title='Products' bgUrl='https://images.pexels.com/photos/713829/pexels-photo-713829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' /> */}
-            {/* Products data  */}
+
 
             <div className={S.container} style={themeState}>
                 <div className={S.filterNav}>
-                    {/* <div className={S.fil}><CiFilter width={25} /> <span>Filter</span></div> */}
                     <div></div>
                     <div className={S.lay}>
 
@@ -105,12 +102,7 @@ function Products() {
                     </div>
                 </div>
                 <div className={S.productsGrid} style={{ display: 'grid', placeItems: 'center', ...gridType, rowGap: '7rem', marginTop: '5rem' }}>
-                    {/* {
 
-                        products.map((product) => {
-                            return <ProductCard data={product} key={product._id} wid={cardWidth} />
-                        })
-                    } */}
                     {
                         products.map((product) => {
                             return <ProductCard data={product} key={product._id} wid={cardWidth} />

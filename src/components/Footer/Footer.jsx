@@ -31,11 +31,11 @@ function Footer() {
                         <p className={S.noM}>+91123456789</p>
                     </div>
                     <div className={S.sm}>
-                        <a href="https://google.com" target='_blank'><GrFacebookOption size={smIconSize} className={S.fb} /></a>
-                        <a href="https://twitter.com/YuvrajDev7524" target='_blank'> <GrTwitter size={smIconSize} className={S.twitter} /></a>
-                        <a href="https://www.instagram.com/yuvraj_soneja/" target='_blank'>  <GrInstagram size={smIconSize} className={S.insta} /></a>
-                        <a href="https://www.linkedin.com/in/yuvrajsoneja/" target='_blank'> <GrLinkedinOption size={smIconSize} className={S.lin} /></a>
-                        <a href="https://google.com" target='_blank'><GrPinterest size={smIconSize} className={S.pintrs} /></a>
+                        <a href="https://google.com" target='_blank' rel="noreferrer"><GrFacebookOption size={smIconSize} className={S.fb} /></a>
+                        <a href="https://twitter.com/YuvrajDev7524" target='_blank' rel="noreferrer"> <GrTwitter size={smIconSize} className={S.twitter} /></a>
+                        <a href="https://www.instagram.com/yuvraj_soneja/" target='_blank' rel="noreferrer">  <GrInstagram size={smIconSize} className={S.insta} /></a>
+                        <a href="https://www.linkedin.com/in/yuvrajsoneja/" target='_blank' rel="noreferrer"> <GrLinkedinOption size={smIconSize} className={S.lin} /></a>
+                        <a href="https://google.com" target='_blank' rel="noreferrer"><GrPinterest size={smIconSize} className={S.pintrs} /></a>
                     </div>
                 </div>
                 <div className={`${S.secB} ${S.listFlex}`}>

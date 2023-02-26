@@ -2,12 +2,10 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import S from './HomeSlider.module.css';
-import { useGlobalContext } from '../../contexts/globalContext'
 import SliderButton from '../SliderButton/SliderButton';
 
 function HomeSlider() {
 
-    let { bgTheme, fontTheme } = useGlobalContext()
     return (
         <>
             <div className="carousel-wrapper" >

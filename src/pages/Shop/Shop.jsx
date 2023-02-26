@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
-import LoadingBar from 'react-top-loading-bar';
 import { useGlobalContext } from '../../contexts/globalContext';
 import S from './Shop.module.css';
-import Styles from '../../components/GenreSection/GenreSection.module.css';
 import CategoryButton from '../../components/CategoryButton/CategoryButton';
-// import Cumb from '../../components/Cumb/Cumb'
 
 function Shop() {
-    let { loadingSpeedController, setLoadingProgress, themeState } = useGlobalContext();
+    let { setLoadingProgress, themeState } = useGlobalContext();
 
     useEffect(() => {
         window.scrollTo(0, 0);

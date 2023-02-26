@@ -1,6 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts/globalContext';
 import S from './ShopCumb.module.css';

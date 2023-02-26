@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';

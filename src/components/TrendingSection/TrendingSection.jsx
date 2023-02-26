@@ -17,10 +17,10 @@ function TrendingSection() {
                     })
                 } */}
                 {
-                    hasToLoad === false ? trendingProducts.slice(0, 6).map((prod) => {
-                        return <ProductCard data={prod} />
-                    }) : trendingProducts.map((prod) => {
-                        return <ProductCard data={prod} />
+                    hasToLoad === false ? trendingProducts.slice(0, 6).map((prod, i) => {
+                        return <ProductCard data={prod} key={i} />
+                    }) : trendingProducts.map((prod, i) => {
+                        return <ProductCard data={prod} key={i} />
                     })
 
                 }

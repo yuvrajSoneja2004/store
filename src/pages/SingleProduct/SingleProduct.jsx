@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useGlobalContext } from '../../contexts/globalContext';
@@ -13,27 +13,21 @@ import BestSeller from '../../components/SinglePageOffers/BestSeller';
 import Homeheadings from '../../components/HomeHeadings/Homeheadings';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Loader from '../../components/Loader/Loader'
-import { CgHeart } from 'react-icons/cg';
 
 function SingleProduct() {
 
     const { product_id } = useParams();
-    let { getSpecificCategoryProduct, singleProduct, getSingleProduct, alsoBuy, getAlsoBuy, dispatch, isLoading, cart, themeState } = useGlobalContext();
+    let { singleProduct, getSingleProduct, alsoBuy, getAlsoBuy, dispatch, isLoading, cart, themeState } = useGlobalContext();
 
-    const topics = ["laptop", "phone", "men-cloths", "facecare", "men-shoes", "women-shoes"];
 
     let navigate = useNavigate();
 
     useEffect(() => {
 
-        var item = topics[Math.floor(Math.random() * topics.length)];
 
-        getSingleProduct(`http://localhost:5000/singleProduct/${product_id}`);
+        getSingleProduct(`https://purple-anemone-veil.cyclic.app/singleProduct/${product_id}`);
 
 
-        // setInterval(() => {
-        //     console.log(singleProduct)
-        // }, 1000);
 
 
         window.scroll(0, 0);
@@ -43,9 +37,7 @@ function SingleProduct() {
 
     }, [navigate])
 
-    // useEffect(() => {
-    //     getAlsoBuy(`http://localhost:5000/categoryProduct?type=${singleProduct[0].category}`)
-    // }, [])
+
 
 
     let productData = singleProduct[0];

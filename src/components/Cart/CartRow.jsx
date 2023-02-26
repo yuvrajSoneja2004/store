@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import S from './Cart.module.css';
 import { CiCircleRemove } from 'react-icons/ci';
 import { useGlobalContext } from '../../contexts/globalContext';

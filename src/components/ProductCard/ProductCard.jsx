@@ -1,6 +1,5 @@
 import React from 'react';
 import S from './ProductCard.module.css';
-import { BsCartPlus } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../contexts/globalContext';
 function ProductCard({ data, wid }) {
@@ -24,7 +23,6 @@ function ProductCard({ data, wid }) {
                     <h2>{data.name.substring(0, 23)}...</h2>
                     <div className={S.lower}>
                         <div className={S.productPrice}><label>₹{data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</label> <del>{data.price + randomAmt}</del></div>
-                        <BsCartPlus size={24} />
                     </div>
                 </div>
             </div>
