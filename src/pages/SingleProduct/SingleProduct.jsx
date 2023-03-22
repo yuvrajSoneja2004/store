@@ -32,7 +32,7 @@ function SingleProduct() {
 
         window.scroll(0, 0);
         //   FETCHING  YOU MAY ALSO BUY DATA
-        getAlsoBuy(`http://localhost:5000/categoryProduct?type=${singleProduct[0].category}`)
+        getAlsoBuy(`https://purple-anemone-veil.cyclic.app/categoryProduct?type=${singleProduct[0].category}`)
 
 
     }, [navigate])
