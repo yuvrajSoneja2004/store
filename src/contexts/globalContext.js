@@ -235,7 +235,6 @@ export const GlobalProvider = ({ children }) => {
             let fetch = await axios.get(ENDPOINT);
             setLoadingProgress(50);
             let res = await fetch.data;
-            console.log(res);
             setLoadingProgress(100);
             dispatch({ type: "SINGLE_PRODUCT_DATA", payload: res });
             dispatch({ type: "ALSO_BUY_DATA", payload: res });
@@ -250,7 +249,7 @@ export const GlobalProvider = ({ children }) => {
         try {
             let fetch = await axios.get(ENDPOINT);
             let res = await fetch.data;
-            console.log(res);
+            console.log(res , "Also buy")
             dispatch({ type: "ALSO_BUY_DATA", payload: res });
 
         } catch (error) {
