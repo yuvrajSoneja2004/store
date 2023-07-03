@@ -13,6 +13,7 @@ import BestSeller from '../../components/SinglePageOffers/BestSeller';
 import Homeheadings from '../../components/HomeHeadings/Homeheadings';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Loader from '../../components/Loader/Loader'
+import axios from 'axios';
 
 function SingleProduct() {
 
@@ -22,11 +23,48 @@ function SingleProduct() {
     const [updateCate, setUpdateCate] = useState(singleProduct[0]?.category);
     const [ide , setIde] = useState(product_id);
 
+    const [localAlsoBuy, setLocalAlsoBuy] = useState([])
+    const [localSingle, setLocalSingle] = useState({});
+    const [isReady, setisReady] = useState(false)
+
 
     let navigate = useNavigate();
 
     useEffect(() => {
 
+        const alsoBuyProducts = async () => {
+            
+            try {
+
+                const [res1, res2] = await Promise.all([
+                    axios.get(`https://purple-anemone-veil.cyclic.app/categoryProduct?type=${updateCate}`).then(function (response) {
+                       setLocalAlsoBuy(response.data)
+                       setisReady(true)
+                       console.log("Nitamb" , response.data)
+                    }).catch(function (error) {
+                        console.error(error);
+                    })
+                ])
+
+            } catch (error) {
+
+            }
+            
+        }
+
+        const leleSingleProduct = async (ENDPOINT) => {
+            try {
+                const fetch = await axios.get(ENDPOINT);
+                const res = await fetch.data;
+                setLocalSingle(res);
+                console.log("Merri yeh dono pagal" , res)
+            } catch (error) {
+                
+            }
+        }
+        leleSingleProduct(`https://purple-anemone-veil.cyclic.app/singleProduct/${product_id}`)
+
+        alsoBuyProducts(`https://purple-anemone-veil.cyclic.app/categoryProduct?type=${updateCate}`);
 
         getSingleProduct(`https://purple-anemone-veil.cyclic.app/singleProduct/${ide}`);
 
@@ -40,11 +78,10 @@ function SingleProduct() {
     }, [navigate])
 
     
-
     // console.log(singleProduct[0]?.category , 'cat')
 
 
-    let productData = singleProduct[0];
+    let productData = localSingle[0];
     const dummyArray = Array(productData?.stars).fill(null);
 
     if (isLoading) {
@@ -129,13 +166,17 @@ function SingleProduct() {
 
             {/* Other sections  */}
             <Homeheadings title="you may also buy" desc="Similar Products" />
-            <div className={S.moreGrid} style={themeState}>
+           {
+            isReady ? (
+                <div className={S.moreGrid} style={themeState}>
                 {
-                    alsoBuy.map((si, i) => {
+                    localAlsoBuy.map((si, i) => {
                         return <ProductCard data={si} key={i} />
                     })
                 }
             </div>
+            ) : "Loading..."
+           }
         </>
     )
 }
