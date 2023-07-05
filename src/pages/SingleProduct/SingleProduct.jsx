@@ -6,6 +6,7 @@ import S from './SingleProduct.module.css';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { AiFillStar } from 'react-icons/ai';
+import {HiOutlinePlusSm, HiOutlineMinusSm} from 'react-icons/hi';
 import FreeDelivery from '../../components/SinglePageOffers/FreeDelivery';
 import COD from '../../components/SinglePageOffers/COD';
 import ReturnPolicy from '../../components/SinglePageOffers/ReturnPolicy';
@@ -23,14 +24,18 @@ function SingleProduct() {
     const [updateCate, setUpdateCate] = useState(singleProduct[0]?.category);
     const [ide , setIde] = useState(product_id);
 
-    const [localAlsoBuy, setLocalAlsoBuy] = useState([])
+    const [localAlsoBuy, setLocalAlsoBuy] = useState([]);
     const [localSingle, setLocalSingle] = useState({});
     const [isReady, setisReady] = useState(false)
 
+    // Product Qunatity
+    const [qty, setQty] = useState(1);
+
+    
 
     let navigate = useNavigate();
 
-
+   
     useEffect(() => {
 
         const alsoBuyProducts = async () => {
@@ -76,18 +81,36 @@ console.log(error)
 
 
     }, [navigate])
+    useEffect(() => {
+        if(qty > productData?.stocks){
+            setQty(productData?.stocks);
+            console.log(productData?.stocks)
+        }
+    
+    } , [qty])
 
     
     // console.log(singleProduct[0]?.category , 'cat')
 
 
     let productData = localSingle[0];
+    useEffect(() => {
+        setQty(1)
+    } , [productData?._id])
+
+    const [selectedColor, setselectedColor] = useState('')
+
+    
+
     const dummyArray = Array(productData?.stars).fill(null);
 
     if (isLoading) {
         return <Loader />
     }
-
+    if(qty < 1){
+        setQty(1)
+    }
+    
     return (
         <>
 
@@ -126,20 +149,20 @@ console.log(error)
                             productData?.isBestSeller ? <BestSeller /> : null
                         }
                     </div>
-                    {/* <Link to='/cart'>
-                        <div className={S.addToCart} >
-
-                            <button onClick={() => {
-
-                                dispatch({ type: "ADD_TO_CART", payload: productData })
-                                console.log(cart);
-
-
-
-
-                            }}>Add to cart</button> </div>
-
-                    </Link> */}
+                    {/* Pick Color  */}
+                    <div className={S.productColor}>
+                       {
+                        productData?.colors.map((color , i) => {
+                            return <div key={i} style={{background: `${color}`}} onClick={() => {setselectedColor(color)}}></div>
+                        })
+                       }
+                    </div>
+                   {/* QTY  */}
+                   <div className={S.qtySingleProduct}>
+                    <button onClick={() => {setQty(qty + 1)}}> <HiOutlinePlusSm size={15}/></button>
+                    <div>{qty}</div>
+                    <button onClick={() => {setQty(qty - 1)}}> <HiOutlineMinusSm size={15}/></button>
+                   </div>
 
 
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -148,7 +171,11 @@ console.log(error)
 
                                 <button onClick={() => {
 
-                                    dispatch({ type: "ADD_TO_CART", payload: productData })
+                                    dispatch({ type: "ADD_TO_CART", payload: {
+                                        ...productData,
+                                        qty,
+                                        selectedProductColor: selectedColor
+                                    } })
                                     console.log(cart);
 
 
