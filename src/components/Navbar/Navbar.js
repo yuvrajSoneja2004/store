@@ -5,16 +5,21 @@ import {
   FaInstagramSquare,
   FaYoutubeSquare,
 } from "react-icons/fa";
-
 import { CiSearch, CiHeart, CiShoppingCart } from 'react-icons/ci'
 import { GiHamburgerMenu } from "react-icons/gi";
-
 import { Link, NavLink } from "react-router-dom";
 import { useGlobalContext } from "../../contexts/globalContext";
+import { useAuth0 } from "@auth0/auth0-react";
+import SliderButton from "../SliderButton/SliderButton";
+
 
 const Navbar = () => {
   const [showMediaIcons, setShowMediaIcons] = useState(false);
   let { themeState, themeHandler } = useGlobalContext();
+
+  // AuthO loginWithRedirect config
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <>
       <nav className="main-nav" style={themeState}>
@@ -50,6 +55,10 @@ const Navbar = () => {
             <li>
               <NavLink to="/contact" style={themeState}>Contact</NavLink>
             </li>
+            
+          
+            
+          
           </ul>
         </div>
 

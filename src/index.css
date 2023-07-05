@@ -20,3 +20,12 @@ html {
 ::-webkit-scrollbar-thumb {
     background: orange;
 }
+
+.btn-primary {
+    background-color: transparent  !important;
+    border: none !important;
+}
+
+.dropdown {
+    display: inline !important;
+}

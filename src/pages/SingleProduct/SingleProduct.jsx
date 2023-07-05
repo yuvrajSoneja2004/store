@@ -30,6 +30,7 @@ function SingleProduct() {
 
     let navigate = useNavigate();
 
+
     useEffect(() => {
 
         const alsoBuyProducts = async () => {
