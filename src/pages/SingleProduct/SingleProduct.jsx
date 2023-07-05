@@ -84,13 +84,11 @@ console.log(error)
     useEffect(() => {
         if(qty > productData?.stocks){
             setQty(productData?.stocks);
-            console.log(productData?.stocks)
         }
     
     } , [qty])
 
     
-    // console.log(singleProduct[0]?.category , 'cat')
 
 
     let productData = localSingle[0];
@@ -98,7 +96,8 @@ console.log(error)
         setQty(1)
     } , [productData?._id])
 
-    const [selectedColor, setselectedColor] = useState('')
+    const [selectedColor, setselectedColor] = useState(productData?.colors[0])
+    
 
     
 

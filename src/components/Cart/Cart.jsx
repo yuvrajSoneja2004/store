@@ -5,12 +5,19 @@ import { useGlobalContext } from '../../contexts/globalContext';
 import S from './Cart.module.css';
 import CartRow from './CartRow';
 import Sed from '../../assets/sed.jpg'
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Cart() {
 
-    let { cart, themeState } = useGlobalContext();
+    let { cart, themeState , changeTitle} = useGlobalContext();
+    let {user , isLoading} = useAuth0();
     const [totalAmt, settotalAmt] = useState(0);
 
+
+
+    useEffect(() => {
+        changeTitle(isLoading ? "Zevon - Cart" : `Zevon - ${user.name}'s Cart`);
+    } , [isLoading])
 
    
 
@@ -18,7 +25,7 @@ function Cart() {
         window.scroll(0, 0);
         console.log(cart , "The cart daat")
         const amount = cart.reduce(
-            (total, product) => total + product.price,
+            (total, product) => total + product.price * product.qty,
             0
           );
           settotalAmt(amount)

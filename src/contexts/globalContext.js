@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
         singleProduct: [],
         alsoBuy: [],
         cart: [],
-        searchRes: []
+        searchRes: [],
     }
 
     // Declaring theme state
@@ -49,6 +49,12 @@ export const GlobalProvider = ({ children }) => {
             console.log(error)
             dispatch({ type: "API_ERROR" })
         }
+    }
+
+    // Change title
+
+    const changeTitle = (TITLE) => {
+        return document.title = TITLE
     }
 
     const onSearch = () => {
@@ -275,7 +281,7 @@ export const GlobalProvider = ({ children }) => {
         ...state, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, dispatch, handlePageClick,
         themeState, themeHandler, loadingProgress, setLoadingProgress, loadingSpeedController,
         bgLinks, getSpecificCategoryProduct, ...cateState, getSingleProduct,
-        getAlsoBuy, inputData, setInputData, onSearch
+        getAlsoBuy, inputData, setInputData, onSearch , changeTitle
     }}
 
     >{children}</GlobalContext.Provider>
