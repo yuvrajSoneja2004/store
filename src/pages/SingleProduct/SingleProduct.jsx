@@ -40,15 +40,14 @@ function SingleProduct() {
                 const [res1, res2] = await Promise.all([
                     axios.get(`https://purple-anemone-veil.cyclic.app/categoryProduct?type=${updateCate}`).then(function (response) {
                        setLocalAlsoBuy(response.data)
-                       setisReady(true)
-                       console.log("Nitamb" , response.data)
+                       setisReady(true);
                     }).catch(function (error) {
                         console.error(error);
                     })
                 ])
 
             } catch (error) {
-
+console.log(error)
             }
             
         }
