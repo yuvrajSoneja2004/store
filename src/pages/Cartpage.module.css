@@ -25,9 +25,9 @@
 
 
 .checkout {
-    min-width: 300px;
+    min-width: 350px;
     /* background: green; */
-    max-height: 34vh;
+    max-height: 40vh;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.2);
     
     background-color: #fff;
@@ -83,6 +83,34 @@
 
 .checkout div:nth-child(3) h3:nth-child(2){
     color: #00badb !important;
+}
+
+
+.checkoutBtn {
+    font-size: 1.6rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.checkoutBtn button {
+    width: 100%;
+    padding: 8px 0;
+    background-color: #00badb;
+    border: none;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    transition: .4s;
+
+}
+
+.checkoutBtn button:hover {
+    background-color: #00badba1;
 }
 
 .rightCol {

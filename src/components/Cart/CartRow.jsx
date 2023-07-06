@@ -7,7 +7,7 @@ import { useGlobalContext } from '../../contexts/globalContext';
 function CartRow({ data }) {
 
     let { dispatch  } = useGlobalContext();
-    const [prodQtys, setprodQtys] = useState(data.qty)
+    const [prodQtys, setprodQtys] = useState(data.qty);
 
     useEffect(() => {
 

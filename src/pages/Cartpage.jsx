@@ -1,21 +1,80 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './Cartpage.module.css';
 import {RiSecurePaymentLine} from 'react-icons/ri';
 import CRow from './CRow';
+import { useGlobalContext } from '../contexts/globalContext';
+import { useAuth0 } from '@auth0/auth0-react';
+import Sed from '../assets/sed.jpg';
+import { Link } from 'react-router-dom';
 
 function Cartpage() {
+
+  let { cart, themeState , changeTitle} = useGlobalContext();
+  let {user , isLoading} = useAuth0();
+  const [totalAmt, settotalAmt] = useState(0);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+  
+
+
+  // Getting data from CRow.jsx (Which is child component of this component).
+  const [qtyFromChildComp , setQtyFromChildComp] = useState();
+
+
+  
+  useEffect(() => {
+      changeTitle(isLoading ? "Zevon - Cart" : `Zevon - ${user.name}'s Cart`);
+  } , [isLoading])
+
+
+  useEffect(() => {
+    setIsPageLoaded(true);
+  } , [])
+
+ 
+
+  useEffect(() => {
+      window.scroll(0, 0);
+      console.log(cart , "The cart daat")
+      const amount = cart.reduce(
+          (total, product) => total + product.price *(!isPageLoaded ? product.qty : qtyFromChildComp),
+          0
+        );
+        settotalAmt(amount)
+      
+  }, [cart])
+
+  const handleDataFromChild = (data) => {
+    // Do something with the data received from the child component
+    setQtyFromChildComp(data)
+  };
+
+
+  if (cart.length === 0) {
+    return <div className={S.noItems} style={themeState}>
+        <img src={Sed} alt="sed" />
+        <h1>Cart is Empty.</h1>
+        <Link to='/products'>  <div className={S.addToCart}><button>Shop Products</button></div></Link>
+    </div>
+}
+
+
   return (
     <div className={S.wholeCart}> 
      <div className={S.wholeCartRow}>
       <div className={S.left}>
-     <CRow />
+        {/* Loop from here  */}
+     {
+      cart.map((cartItem, i) => {
+        return <CRow  key={i} data={cartItem} sendDataToParent={handleDataFromChild}/>
+      })
+     }
       </div>
       <div className={S.checkout}>
         <div>Order Details</div>
         {/* 2nd  */}
         <div>
          <h2>Price (2 Items)</h2>
-         <h2>$200</h2>
+         <h2>₹{totalAmt}</h2>
          <h2>Delivery Charges</h2>
          <h2 style={{color: '#388e3c'}}>$90</h2>
         </div>
@@ -24,7 +83,7 @@ function Cartpage() {
           <h3>Total Amount</h3>
           <h3>$23,556</h3>
         </div>
-        <div>
+        <div className={S.checkoutBtn}>
         <button>Checkout</button>
         </div>
       </div>

@@ -36,7 +36,7 @@ function Cart() {
         return <div className={S.noItems} style={themeState}>
             <img src={Sed} alt="sed" />
             <h1>Cart is Empty.</h1>
-            <Link to='/products'>  <div className={S.addToCart}><button>Shop Products</button></div></Link>
+            {/* <Link to={"/products"}>  <div className={S.addToCart}><button>Shop Products</button></div></Link> */}
         </div>
     }
 
