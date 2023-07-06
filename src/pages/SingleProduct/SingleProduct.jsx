@@ -173,7 +173,7 @@ console.log(error)
                                     dispatch({ type: "ADD_TO_CART", payload: {
                                         ...productData,
                                         qty,
-                                        selectedProductColor: selectedColor
+                                        selectedProductColor: selectedColor === undefined ? productData.colors[0] : selectedColor
                                     } })
                                     console.log(cart);
 

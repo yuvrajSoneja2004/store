@@ -47,6 +47,9 @@ function Cart() {
                 <div className={S.headerRow}>
                     <div className={S.left}><h4>PRODUCT</h4></div>
                     <div className={S.right}><h4>TOTAL</h4></div>
+                    <div className={S.right}><h4>QUANTITY</h4></div>
+                    <div className={S.right}><h4> </h4></div>
+                    <div className={S.right}><h4>COLOR</h4></div>
                 </div>
                 {
                     cart.map(item => <CartRow data={item} />)

@@ -16,6 +16,7 @@ import Wishlist from './components/Wishlist/Wishlist';
 import ContactMe from './components/ContactMe/ContactMe';
 import { Search } from './components/Search/Search';
 import About from './pages/About/About';
+import Cartpage from './pages/Cartpage';
 function App() {
 
   let { loadingProgress, setLoadingProgress, themeState, } = useGlobalContext();
@@ -38,7 +39,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} />
         <Route path='/shop' element={<Shop />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/cart' element={<Cartpage />} />
+        {/* <Route path='/cart' element={<Cart />} /> */}
         <Route path='/search' element={<Search />} />
         <Route path='/about' element={<About />} />
         <Route path='/wishlist' element={<Wishlist />} />
