@@ -18,7 +18,7 @@ function CRow({data , sendDataToParent}) {
             setprodQtys(1)
         }
 
-        sendDataToParent(prodQtys)
+        sendDataToParent(prodQtys); 
     } , [prodQtys])
 
 
@@ -46,7 +46,7 @@ function CRow({data , sendDataToParent}) {
             </div>
             <div className={S.selectedColor}>
                 <h1>Selected Color:</h1>
-                <div style={{background: `${data.selectedProductColor} !important`}}></div>
+                <div style={{background: `${data.selectedProductColor}`}}></div>
             </div>
             <div>
                 <h1 style={{color: '#878787'}}>Brand: {data.company.toUpperCase()}</h1>

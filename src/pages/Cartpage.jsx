@@ -39,13 +39,13 @@ function Cartpage() {
           (total, product) => total + product.price *(!isPageLoaded ? product.qty : qtyFromChildComp),
           0
         );
-        settotalAmt(amount)
+        settotalAmt(amount);
       
-  }, [cart])
+  }, [cart , qtyFromChildComp])
 
   const handleDataFromChild = (data) => {
-    // Do something with the data received from the child component
-    setQtyFromChildComp(data)
+    //  Data received from the child component
+    setQtyFromChildComp(data);
   };
 
 
@@ -74,14 +74,14 @@ function Cartpage() {
         {/* 2nd  */}
         <div>
          <h2>Price (2 Items)</h2>
-         <h2>₹{totalAmt}</h2>
+         <h2>₹{totalAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
          <h2>Delivery Charges</h2>
-         <h2 style={{color: '#388e3c'}}>$90</h2>
+         <h2 style={{color: '#388e3c'}}>FREE</h2>
         </div>
         {/* 3rd */}
         <div>
           <h3>Total Amount</h3>
-          <h3>$23,556</h3>
+          <h3>₹{totalAmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
         </div>
         <div className={S.checkoutBtn}>
         <button>Checkout</button>
