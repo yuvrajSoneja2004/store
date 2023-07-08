@@ -6,6 +6,34 @@ let reducer = (state, action) => {
                 ...state,
                 isLoading: true
             }
+            
+            // Reducers for controlling background music
+            // case "NONE-BG-CHANGE": 
+            // return {
+            //     ...state,
+            //     bgMusicIndex: 0
+            // }
+            // case "THEME-1-BG-CHANGE": 
+            // return {
+            //     ...state,
+            //     bgMusicIndex: 1
+            // }
+            // case "THEME-2-BG-CHANGE": 
+            // return {
+            //     ...state,
+            //     bgMusicIndex: 2
+            // }
+            // case "THEME-3-BG-CHANGE": 
+            // return {
+            //     ...state,
+            //     bgMusicIndex: 3
+            // }
+
+            case "THEME-BG-CHANGE": 
+            return {
+                ...state,
+                bgMusicIndex: action.payload
+            }
 
         case "ALL_PRODUCTS":
 
@@ -154,6 +182,7 @@ let cateogryReducer = (state, action) => {
                 isErrorOccured: true,
                 cateLoading: false
             }
+
 
 
         default:

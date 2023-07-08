@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home/Home';
@@ -17,14 +17,15 @@ import ContactMe from './components/ContactMe/ContactMe';
 import { Search } from './components/Search/Search';
 import About from './pages/About/About';
 import Cartpage from './pages/Cartpage';
+
+
 function App() {
 
   let { loadingProgress, setLoadingProgress, themeState, } = useGlobalContext();
-
-
-
   return (
+   
     <>
+
       <NavigationBar />
       {/* <Navbar />  boy boy !  */}
 

@@ -24,6 +24,7 @@ export const GlobalProvider = ({ children }) => {
         alsoBuy: [],
         cart: [],
         searchRes: [],
+        bgMusicIndex: 0
     }
 
     // Declaring theme state

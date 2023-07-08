@@ -9,6 +9,7 @@ import ServicesSection from '../../components/ServicesSection/ServicesSection'
 import TrendingSection from '../../components/TrendingSection/TrendingSection'
 
 
+
 function Home() {
 
     useEffect(() => {
@@ -16,6 +17,7 @@ function Home() {
     }, [])
     return (
         <>
+
             <HomeSlider />
             <GenreSection />
             <Homeheadings title="trending" desc="Top view in this week" />

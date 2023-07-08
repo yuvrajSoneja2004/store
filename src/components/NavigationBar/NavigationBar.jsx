@@ -7,25 +7,31 @@ import Logo from '../../assets/logo.png'
 import InvertedLogo from '../../assets/logoInverted.png'
 import { useGlobalContext } from '../../contexts/globalContext';
 import { CiSearch, CiShoppingCart , CiLogin } from 'react-icons/ci';
-import {FiLogOut} from 'react-icons/fi';
+import {FiLogOut , FiMusic} from 'react-icons/fi';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import "../Navbar/navbar.css";
 import { useAuth0 } from '@auth0/auth0-react';
-import SliderButton from '../SliderButton/SliderButton';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { allThemes } from '../Backgroundmusic';
+
+
 function NavigationBar() {
-     // AuthO loginWithRedirect config
+    //   AuthO loginWithRedirect config
   const { loginWithRedirect , user , isAuthenticated, logout , isLoading  } = useAuth0();
 
-    let { themeState, themeHandler, cart   } = useGlobalContext();
+    let { themeState, themeHandler, cart , dispatch  } = useGlobalContext();
 
     useEffect(() => {
 console.log(user , "THis is user" , isAuthenticated);
     } , [])
 
+
+
     return (
+        <>
         <Navbar style={themeState} expand="lg" className={S.navB}>
+       
             <Container className={S.wrapper}>
                 <Link to='/' style={{ margin: '1rem' }}> <Navbar.Brand><img src={!themeState.isDarkMode ? Logo : InvertedLogo} alt="logo" width={110} /></Navbar.Brand></Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className={!themeState.isDarkMode ? `${S.myToggleB}` : `${S.myToggle}`} />
@@ -37,7 +43,7 @@ console.log(user , "THis is user" , isAuthenticated);
                         <Nav.Link className={S.navLink}><Link to='/products/sale' className={`${S.noLink} cumb`} > <span className="spanSale">Sale</span><strong style={themeState}>Sale</strong></Link></Nav.Link>
                         <Nav.Link className={S.navLink}><Link to='/about' className={S.noLink}><strong style={themeState}>About</strong></Link></Nav.Link>
                         <Nav.Link className={S.navLink}><Link to='/contact' className={S.noLink}><strong style={themeState}>Contact</strong></Link></Nav.Link>
-                    
+                   
                         <div className={S.sm}>
                             <span
 
@@ -54,12 +60,12 @@ console.log(user , "THis is user" , isAuthenticated);
                                 to='/search'
                                 style={themeState}
                                 className={S.navIcons}
-                              
+                             
 
                             >
                                 <CiSearch size={26} style={themeState} className={S.navIcons} />
                             </Link>
- {/* Login  */}
+                            {/* Login  */}
                                 {
                                     !isAuthenticated ? (
                                         !isLoading ? (
@@ -83,12 +89,25 @@ console.log(user , "THis is user" , isAuthenticated);
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu style={{ background: 'transperent !important' }} className='myDrop' >
+                                <Dropdown.Item href="#/action-1" style={{fontSize: '1.6rem'}}><strong> <FiMusic  size={15} style={{marginRight: '4px'}}/>Background Themes</strong></Dropdown.Item>
+                                <hr />
+                                {
+                                    allThemes.map((song , i) => {
+                                        return i === 0 ? <Dropdown.Item href="#/action-1" style={{fontSize: '1.6rem'}} onClick={() => dispatch({type: 'THEME-BG-CHANGE' , payload: i})}><input type='radio' name='optn' id={`theme-${i}`} /><label htmlFor={`theme-${i}`} > None</label></Dropdown.Item> : (
+                                            <Dropdown.Item href="#/action-1" style={{fontSize: '1.6rem'}} onClick={() => dispatch({type: 'THEME-BG-CHANGE' , payload: i})}><input type='radio' name='optn' id={`theme-${i}`} /><label htmlFor={`theme-${i}`} > Theme {i}</label></Dropdown.Item>
+                                        )
+                                    })
+                                }
+                             
+                                <hr />
                                     <Dropdown.Item href="#/action-1" onClick={() => { logout() }} style={{fontSize: '1.6rem'}}> <FiLogOut /> Logout</Dropdown.Item>
+
+                                  
 
                                 </Dropdown.Menu>
                                            </Dropdown>
                                         </span>
-                                    
+                                   
                                 }
                             <div className={S.cartIcon} style={{ position: 'relative', display: 'inline', ...themeState }} >
                                 <Link
@@ -102,13 +121,16 @@ console.log(user , "THis is user" , isAuthenticated);
                                 </Link>
                                 <span className={S.cartCount} style={themeState}>{cart.length > 99 ? "99+" : cart.length}</span>
                             </div>
-                            
                            
+
                         </div>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
+
         </Navbar>
+        </>
+       
     );
 }
 
