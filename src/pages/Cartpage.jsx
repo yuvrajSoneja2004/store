@@ -22,8 +22,14 @@ function Cartpage() {
 
   
   useEffect(() => {
-      changeTitle(isLoading ? "Zevon - Cart" : `Zevon - ${user.name}'s Cart`);
-  } , [isLoading])
+      changeTitle(user === undefined ? "Zevon - Cart" : `Zevon - ${user?.name}'s Cart`);
+
+      return () => {
+        changeTitle("Zevon Ecommerce");
+
+      }
+      
+  } , [isLoading , user])
 
 
   useEffect(() => {
@@ -51,7 +57,7 @@ function Cartpage() {
 
   if (cart.length === 0) {
     return <div className={S.noItems} style={themeState}>
-        <img src={Sed} alt="sed" />
+        <img src={Sed} alt="sed" width={500} height={500} />
         <h1>Cart is Empty.</h1>
         <Link to='/products'>  <div className={S.addToCart}><button>Shop Products</button></div></Link>
     </div>

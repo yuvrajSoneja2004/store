@@ -17,6 +17,7 @@ import ContactMe from './components/ContactMe/ContactMe';
 import { Search } from './components/Search/Search';
 import About from './pages/About/About';
 import Cartpage from './pages/Cartpage';
+import LoginForm from './pages/Register/Login';
 
 
 function App() {
@@ -27,8 +28,6 @@ function App() {
     <>
 
       <NavigationBar />
-      {/* <Navbar />  boy boy !  */}
-
       <LoadingBar
         color={themeState.color}
         progress={loadingProgress}
