@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useGlobalContext } from '../../contexts/globalContext';
 import S from './Shop.module.css';
 import CategoryButton from '../../components/CategoryButton/CategoryButton';
+import { motion } from 'framer-motion';
 
 function Shop() {
     let { setLoadingProgress, themeState } = useGlobalContext();
@@ -20,7 +21,12 @@ function Shop() {
 
     }, [])
     return (
-        <>
+        <motion.div
+        initial={{opacity: 0 , y: 30}}
+        animate={{opacity: 1 , y: 0}}
+        transition={{duration: .1}}
+        exit={{opacity: 0 , y: 30}}
+        >
             <div className={S.wrapper}>
                 <div className={S.collection} style={{ margin: '0', paddingBottom: '7rem !important' }}>
                     <h1>Collection</h1>
@@ -35,10 +41,9 @@ function Shop() {
                     <div className={`${S.gridItem} ${S.bgE}`}><CategoryButton type="Tech" path='/products/tech' /></div>
                     <div className={`${S.gridItem} ${S.bgF}`}><CategoryButton type="Sale" path='/products/sale' /></div>
                 </div>
-
-
             </div>
-        </>
+            </motion.div>
+        
     )
 }
 

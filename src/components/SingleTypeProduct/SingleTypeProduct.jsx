@@ -6,6 +6,7 @@ import { useGlobalContext } from '../../contexts/globalContext';
 import ProductCard from '../ProductCard/ProductCard';
 import Loader from '../Loader/Loader';
 import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import ErrorB from '../ErrorB/ErrorB';
 
 function SingleTypeProduct() {
@@ -38,7 +39,12 @@ function SingleTypeProduct() {
         return <ErrorB />
     }
     return (
-        <>
+        <motion.div
+        initial={{opacity: 0 , y: 30}}
+        animate={{opacity: 1 , y: 0}}
+        transition={{duration: .1}}
+        exit={{opacity: 0 , y: 30}}
+        >
             <ShopCumb categoryType={category} />
             <div className={S.grid} style={themeState}>
                 {
@@ -48,7 +54,7 @@ function SingleTypeProduct() {
                 }
             </div>
 
-        </>
+        </motion.div>
     )
 }
 

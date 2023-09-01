@@ -6,6 +6,7 @@ import { useGlobalContext } from '../contexts/globalContext';
 import { useAuth0 } from '@auth0/auth0-react';
 import Sed from '../assets/sed.jpg';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 function Cartpage() {
 
@@ -67,15 +68,15 @@ function Cartpage() {
   return (
     <div className={S.wholeCart}> 
      <div className={S.wholeCartRow}>
-      <div className={S.left}>
+      <motion.div className={S.left} initial={{opacity: 0 , y: 100}} animate={{opacity: 1 , y:0}} exit={{opacity: 0 , y: -100}} transition={{duration: .3}}>
         {/* Loop from here  */}
      {
       cart.map((cartItem, i) => {
         return <CRow  key={i} data={cartItem} sendDataToParent={handleDataFromChild}/>
       })
      }
-      </div>
-      <div className={S.checkout}>
+      </motion.div>
+      <motion.div className={S.checkout} initial={{opacity:0 , scale: 0}} animate={{opacity: 1 , scale:1}} exit={{opacity:0 , scale:0}} transition={{duration: .3}}>
         <div>Order Details</div>
         {/* 2nd  */}
         <div>
@@ -92,7 +93,7 @@ function Cartpage() {
         <div className={S.checkoutBtn}>
         <button>Checkout</button>
         </div>
-      </div>
+      </motion.div>
      </div>
      
     </div>

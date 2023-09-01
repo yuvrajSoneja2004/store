@@ -32,6 +32,7 @@ export const GlobalProvider = ({ children }) => {
     let initialThemeState = {
         background: '#ffffff !important',
         color: '#000000 !important',
+        transition: '.3s',
         isDarkMode: false,
 
     }

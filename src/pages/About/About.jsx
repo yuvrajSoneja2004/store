@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import S from './About.module.css';
 import ME from '../../assets/me.jpg'
 import { useGlobalContext } from '../../contexts/globalContext'
+import { motion } from 'framer-motion';
 
 function About() {
 
@@ -11,7 +12,12 @@ function About() {
         window.scroll(0, 0);
     }, [])
     return (
-        <div className={S.wrapper} style={themeState}>
+        <motion.div
+        initial={{opacity: 0 , y: 30}}
+        animate={{opacity: 1 , y: 0}}
+        transition={{duration: .1}}
+        exit={{opacity: 0 , y: 30}}
+        className={S.wrapper} style={themeState}>
             <div className={S.left}>
                 <img src={ME} alt="myPicture" />
             </div>
@@ -26,7 +32,7 @@ function About() {
                     If you're looking for a web developer who can bring your ideas to life, then look no further! Please feel free to browse through my portfolio by clicking <a href="https://yuvrajportfolio.netlify.app/" target='_blank' rel="noreferrer">here</a> to see some of my past projects and get in touch if you have any questions or would like to discuss your project in more detail.
                 </p>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

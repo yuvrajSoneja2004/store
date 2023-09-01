@@ -29,3 +29,9 @@ html {
 .dropdown {
     display: inline !important;
 }
+
+.activeProductColor {
+    transition: .3s;
+    border: 4px solid #00BADB;
+}
+

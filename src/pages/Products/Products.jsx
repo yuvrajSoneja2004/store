@@ -4,8 +4,7 @@ import { Dropdown } from 'react-bootstrap';
 import { useGlobalContext } from '../../contexts/globalContext';
 import Loader from '../../components/Loader/Loader'
 import ProductCard from '../../components/ProductCard/ProductCard';
-// import Cumb from '../../components/Cumb/Cumb';
-
+import { motion } from 'framer-motion';
 
 function Products() {
 
@@ -48,7 +47,6 @@ function Products() {
         setCardWidth({ width: '24rem', minHeight: '40rem' })
     }
 
-    console.log(products);
 
 
 
@@ -58,14 +56,14 @@ function Products() {
     if (isLoading) {
         return <Loader />
     }
-    console.log(products)
 
     return (
-
-        <>
-
-
-
+        <motion.div
+        initial={{opacity: 0 , y: 30}}
+        animate={{opacity: 1 , y: 0}}
+        transition={{duration: .1}}
+        exit={{opacity: 0 , y: 30}}
+        >
             <div className={S.container} style={themeState}>
                 <div className={S.filterNav}>
                     <div></div>
@@ -112,9 +110,7 @@ function Products() {
                 </div>
 
             </div>
-
-
-        </>
+        </motion.div>
     )
 }
 

@@ -15,6 +15,7 @@ import Homeheadings from '../../components/HomeHeadings/Homeheadings';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Loader from '../../components/Loader/Loader'
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 function SingleProduct() {
 
@@ -26,7 +27,10 @@ function SingleProduct() {
 
     const [localAlsoBuy, setLocalAlsoBuy] = useState([]);
     const [localSingle, setLocalSingle] = useState({});
-    const [isReady, setisReady] = useState(false)
+    const [isReady, setisReady] = useState(false);
+
+    // Index of the currently product selected color
+    const [selectedColorIndex , setSelectedColorIndex] = useState(undefined);
 
     // Product Qunatity
     const [qty, setQty] = useState(1);
@@ -34,6 +38,21 @@ function SingleProduct() {
     
 
     let navigate = useNavigate();
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      // Delay in milliseconds
+      const delay = 9000; // 1 second
+  
+      // Show the div after the specified delay
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, delay);
+  
+      // Clean up the timer when the component unmounts
+      return () => clearTimeout(timer);
+    }, []);
 
    
     useEffect(() => {
@@ -112,9 +131,8 @@ console.log(error)
     
     return (
         <>
-
             <div className={S.wrapper} style={themeState}>
-                <div className={S.left}>
+                <motion.div className={S.left} initial={{y: 100 , opacity: .5}} animate={{y:0, opacity: 1}} exit={{y: 0 , opacity: 0}} transition={{duration: 1, ease:"easeOut"}}>
                     <Carousel className={S.cro} autoPlay={true} infiniteLoop={true} showArrows={false} showStatus={false}>
                         {
                             productData?.images?.map((img) => {
@@ -122,9 +140,9 @@ console.log(error)
                             })
                         }
                     </Carousel>
-                </div>
-                <div className={S.right}>
-                    <h1>{productData?.name}</h1>
+                </motion.div>
+                <motion.div className={S.right} initial={{x: 100 , opacity: .5 ,}}  animate={{x:0, opacity: 1}} exit={{x: 100 , opacity: 0}} transition={{duration: .4, ease:"easeOut"}}>
+                    <motion.h1>{productData?.name}</motion.h1>
                     <h3>{productData?.company}</h3>
                     <h2>{dummyArray.map(star => <AiFillStar className={S.starCol} />)}  <span>{productData?.reviews?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} reviews</span></h2>
                     <h2 className={S.price}>₹{productData?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
@@ -152,15 +170,20 @@ console.log(error)
                     <div className={S.productColor}>
                        {
                         productData?.colors.map((color , i) => {
-                            return <div key={i} style={{background: `${color}`}} onClick={() => {setselectedColor(color)}}></div>
+                            return <motion.div key={i} style={{background: `${color}`}} onClick={() => 
+                                {
+                                    setselectedColor(color)
+                                    setSelectedColorIndex(i)
+
+                                }} whileHover={{scale: 1.1}}  whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 400, damping: 17 }} className={i === selectedColorIndex ? "activeProductColor" : ""}></motion.div>
                         })
                        }
                     </div>
                    {/* QTY  */}
                    <div className={S.qtySingleProduct}>
-                    <button onClick={() => {setQty(qty + 1)}}> <HiOutlinePlusSm size={15}/></button>
+                    <motion.button  onClick={() => {setQty(qty + 1)}}> <HiOutlinePlusSm size={15}/></motion.button>
                     <div>{qty}</div>
-                    <button onClick={() => {setQty(qty - 1)}}> <HiOutlineMinusSm size={15}/></button>
+                    <motion.button  onClick={() => {setQty(qty - 1)}}> <HiOutlineMinusSm size={15}/></motion.button>
                    </div>
 
 
@@ -187,7 +210,7 @@ console.log(error)
 
 
 
-                </div>
+                </motion.div>
             </div>
 
             {/* Other sections  */}
