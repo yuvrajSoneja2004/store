@@ -1,6 +1,8 @@
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { styled } from 'styled-components';
 
 
@@ -11,9 +13,10 @@ function Login() {
         userpass: ""
     });
 
+    const [isLoading , setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleInput = (e) => {
+    const handleInput =  async (e) => {
         const { value, name } = e.target;
         setUserInfo(prevInfo => ({
           ...prevInfo,
@@ -21,10 +24,36 @@ function Login() {
         }));
       };
 
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true)
+        try {
+           const { data } =  await axios.post(`https://purple-anemone-veil.cyclic.app/login`, {
+            userEmail: userInfo.useremail,
+            userPass: userInfo.userpass
+           });
+           if(data?.res === "ok"){
+            localStorage.setItem("user_id" , data?.msg);
+               navigate("/");
+            }
+        
+        } catch (error) {
+            if(error.response.status === 422)
+            toast.error('User with this email already exists', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        } finally {
+            setIsLoading(false)
+        
       }
-
+    }
     
   return (
         <LoginElements onSubmit={handleSubmit} initial={{opacity: 0 , x: -100}} animate={{opacity: 1 , x: 0}}
@@ -48,13 +77,7 @@ function Login() {
 
 
 
-const Whole = styled.form`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    gap: 170px;
-`
+
 
 const Blob = styled.div`
 

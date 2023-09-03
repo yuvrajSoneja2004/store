@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import S from './NavigationBar.module.css';
 import Logo from '../../assets/logo.png'
 import InvertedLogo from '../../assets/logoInverted.png'
@@ -11,23 +11,21 @@ import {FiLogOut , FiMusic} from 'react-icons/fi';
 import { MdOutlineLightMode, MdOutlineNightlight } from 'react-icons/md';
 import "../Navbar/navbar.css";
 import { useAuth0 } from '@auth0/auth0-react';
-import { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { allThemes } from '../Backgroundmusic';
+import { isAuthenticated } from '../../utils/checkAuth'
+import DefaultUserLogo from '../../assets/default_user.png';
 
 
 function NavigationBar() {
     //   AuthO loginWithRedirect config
-  const { loginWithRedirect , user , isAuthenticated, logout , isLoading  } = useAuth0();
+  const { loginWithRedirect , user , logout , isLoading  } = useAuth0();
 
-    let { themeState, themeHandler, cart , dispatch  } = useGlobalContext();
+    let { themeState, themeHandler, cart , dispatch , userInfo  } = useGlobalContext();
+    const navigate = useNavigate();
+    let jwtIsAuth = isAuthenticated();
 
-    useEffect(() => {
-console.log(user , "THis is user" , isAuthenticated);
-    } , [])
-
-
-
+  
     return (
         <>
         <Navbar style={themeState} expand="lg" className={S.navB}>
@@ -67,12 +65,15 @@ console.log(user , "THis is user" , isAuthenticated);
                             </Link>
                             {/* Login  */}
                                 {
-                                    !isAuthenticated ? (
+                                    !jwtIsAuth ? (
                                         !isLoading ? (
                                             <span
                                 style={themeState}
                                 className={S.navIcons}
-                                onClick={() => loginWithRedirect()}
+                                onClick={() => { 
+                                    
+                                    navigate("/register/login")
+                                 }}
 
                             >
                                 <CiLogin size={26} style={themeState} className={S.navIcons} />
@@ -82,9 +83,11 @@ console.log(user , "THis is user" , isAuthenticated);
                                         <span style={{display: 'inline !important'}}>
                                            <Dropdown style={{display: 'inline !important'}}>
                                            <Dropdown.Toggle id="dropdown-basic" style={{background: 'transparent !important'}}>
-                                    <img src={user?.picture} alt='userProfile' className='auth-user-img' style={{
+                                    <img src={userInfo?.userProfilePic === null ? DefaultUserLogo : userInfo?.userProfilePic } alt='userProfile' className='auth-user-img' style={{
                                         width: '27px',
-                                        borderRadius: '50%'
+                                        height: '27px',
+                                        borderRadius: '50%',
+                                        objectFit: 'cover'
                                     }} />
                                 </Dropdown.Toggle>
 
@@ -100,7 +103,7 @@ console.log(user , "THis is user" , isAuthenticated);
                                 }
                              
                                 <hr />
-                                    <Dropdown.Item href="#/action-1" onClick={() => { logout() }} style={{fontSize: '1.6rem'}}> <FiLogOut /> Logout</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1" onClick={() => { localStorage.clear(); }} style={{fontSize: '1.6rem'}}> <FiLogOut /> Logout</Dropdown.Item>
 
                                   
 

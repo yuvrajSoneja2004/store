@@ -6,12 +6,16 @@ import { useGlobalContext } from './contexts/globalContext';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import AnimatedRoutes from './components/AnimatedRoutes/AnimatedRoutes';
 import MyScrollToTop from './utils/ScrollToTop';
-
+import 'react-toastify/dist/ReactToastify.css';
+import { isAuthenticated } from './utils/checkAuth';
+  
 
 function App() {
 
   let { loadingProgress, setLoadingProgress, themeState, } = useGlobalContext();
   return (
+
+
    
   <>
       <NavigationBar />

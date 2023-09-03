@@ -132,6 +132,13 @@ let reducer = (state, action) => {
                 cart: state.cart.filter((c) => c._id !== action.payload._id)
             }
 
+        case "SET_USER_PROFILE_INFO":
+            return {
+                ...state,
+                userInfo : action.payload
+                
+            }
+
         default:
             return state;
     }
