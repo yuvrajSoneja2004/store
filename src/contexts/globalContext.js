@@ -156,27 +156,41 @@ export const GlobalProvider = ({ children }) => {
     // API URL
     let API_URL = "https://purple-anemone-veil.cyclic.app/";
 
+
+
+    const [productsLimit , setProductsLimit] = useState(6);
     // Fetching data from API
-
-
     const getData = async () => {
         dispatch({ type: 'API_LOADING' });
         try {
-            let fetch = await axios.get(API_URL);
+            let fetch = await axios.get(`${API_URL}?limit=${productsLimit}`);
             let res = await fetch.data;
-            // console.log(res);
             dispatch({ type: "ALL_PRODUCTS", payload: res });
 
         } catch (error) {
             dispatch({ type: "API_ERROR" });
         }
     }
+
+    const handleInfiniteScroll = async () => {
+        try {
+         if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight){
+            setProductsLimit(prev => prev + 1);
+            console.log("Got funkin hit to the bottom of the screen man")
+         }
+        } catch (error) {
+            
+        }
+    }
+
+
+
     const getAsendingData = async () => {
         dispatch({ type: 'API_LOADING' });
         try {
             let fetch = await axios.get('https://purple-anemone-veil.cyclic.app/asending');
             let asendingRes = await fetch.data;
-            // console.log(res);
+            dispatch({ type: "ASENDING_DATA", payload: asendingRes });
             dispatch({ type: "ASENDING_DATA", payload: asendingRes });
         } catch (error) {
             dispatch({ type: "API_ERROR" });
@@ -277,7 +291,13 @@ export const GlobalProvider = ({ children }) => {
         onSearch();
 
 
-    }, [])
+    }, [productsLimit])
+
+    useEffect(() => {
+        // handleInfiniteScroll();
+        window.addEventListener("scroll" , handleInfiniteScroll);
+        return () => window.removeEventListener("scroll", handleInfiniteScroll);
+    } , [])
 
 
     return <GlobalContext.Provider value={{

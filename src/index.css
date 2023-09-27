@@ -6,7 +6,7 @@ html {
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 100px;
     background: green;
     display: none;
@@ -17,9 +17,9 @@ html {
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
     background: orange;
-}
+} */ 
 
 .btn-primary {
     background-color: transparent  !important;

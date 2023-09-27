@@ -47,7 +47,7 @@ let reducer = (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                products: action.payload,
+                products:  [...state.products, ...action.payload],
                 trendingProducts: trendingData,
                 bestSellingProducts: bestSellerData
 

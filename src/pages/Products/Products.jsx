@@ -15,7 +15,7 @@ function Products() {
 
     const { isLoading, products, getAsendingData, getDesendingData, getHighToLow, getLowToHigh, loadingSpeedController, themeState } = useGlobalContext();
 
-    useEffect(loadingSpeedController, [])
+    useEffect(loadingSpeedController, []);
 
 
     // Dynamic grid styles state
@@ -27,7 +27,6 @@ function Products() {
     const [cardWidth, setCardWidth] = useState({ width: '30rem', minHeight: '43rem' });
 
     // Defining Functions for layout logic
-
     const layoutAFun = () => {
         setGridType({ gridTemplateColumns: '1fr 1fr 1fr ' });
         setCardWidth({ width: '30rem', minHeight: '43rem' });
@@ -53,9 +52,9 @@ function Products() {
 
 
 
-    if (isLoading) {
-        return <Loader />
-    }
+    // if (isLoading) {
+    //     return <Loader />
+    // }
 
     return (
         <motion.div
@@ -110,6 +109,7 @@ function Products() {
                 </div>
 
             </div>
+            {isLoading ? <Loader /> : ""}
         </motion.div>
     )
 }
